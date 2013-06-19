@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2013-06-19T14:55:51</date>
+  <millis>1371646551667</millis>
+  <sequence>0</sequence>
+  <logger>GoogleMetaExtractor</logger>
+  <level>INFO</level>
+  <class>se.testing.maven.metaextractor.logger.LoggerFactory</class>
+  <method>getLogger</method>
+  <thread>1</thread>
+  <message>test 1</message>
+</record>
+<record>
+  <date>2013-06-19T14:55:51</date>
+  <millis>1371646551671</millis>
+  <sequence>1</sequence>
+  <logger>GoogleMetaExtractor</logger>
+  <level>INFO</level>
+  <class>se.testing.maven.metaextractor.Startup</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>INFO-1</message>
+</record>
+<record>
+  <date>2013-06-19T14:55:51</date>
+  <millis>1371646551672</millis>
+  <sequence>2</sequence>
+  <logger>GoogleMetaExtractor</logger>
+  <level>INFO</level>
+  <class>se.testing.maven.metaextractor.Startup</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>INFO-2</message>
+</record>
+</log>

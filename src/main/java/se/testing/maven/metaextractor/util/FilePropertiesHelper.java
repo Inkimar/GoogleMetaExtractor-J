@@ -2,8 +2,10 @@ package se.testing.maven.metaextractor.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -65,6 +67,36 @@ public class FilePropertiesHelper {
         }
 
         return Arrays.asList(split);
+    }
+
+    public static String getLogNameWithPrefix() {
+        String logFileName = getLogFileName();
+        String prefix = getFormattedDate();
+
+        return prefix + "-" + logFileName;
+    }
+
+    private static String getLogFileName() {
+
+        String fileName = "";
+        Properties properties = new Properties();
+
+        try {
+            InputStream iStream = getInputStream();
+            properties.load(iStream);
+            fileName = properties.getProperty("log.filename");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return fileName;
+    }
+
+    private static String getFormattedDate() {
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        String formattedDate = format.format(date);
+        return formattedDate;
     }
 
     private static InputStream getInputStream() {

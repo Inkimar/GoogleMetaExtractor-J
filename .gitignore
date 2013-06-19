@@ -1,5 +1,5 @@
 *.class
-
+20*.xml20*.xml
 /target
 # Package Files #
 *.jar

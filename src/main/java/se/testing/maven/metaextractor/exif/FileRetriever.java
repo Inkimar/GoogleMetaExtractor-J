@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.testing.maven.metaextractor.ListFilesUtil;
 import se.testing.maven.metaextractor.Startup;
-import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 
 /**
  *
@@ -31,6 +30,31 @@ public class FileRetriever {
 
         for (File file : files) {
                 if (file.isFile() && file.getName().contains(filter)) {
+                    System.out.println(file.getName());
+                    try {
+                        Metadata metadata = ImageMetadataReader.readMetadata(file);
+                        ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
+                        list = getAllTags(metadata, isFilteredFromUnknown);
+
+                    } catch (ImageProcessingException | IOException ex) {
+                        Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            
+        }
+
+        System.out.println("List is " + list);
+        return list;
+    }
+    public List fetchMetaDataFromImage(String directoryLinuxMac) {
+        System.out.println("Fetching Files");
+        File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
+        List<String> list = new ArrayList<>();
+        
+        boolean isFilteredFromUnknown = true;
+
+        for (File file : files) {
+                if (file.isFile()) {
                     System.out.println(file.getName());
                     try {
                         Metadata metadata = ImageMetadataReader.readMetadata(file);
