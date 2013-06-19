@@ -1,13 +1,9 @@
 package se.testing.maven.metaextractor;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
-import java.util.logging.XMLFormatter;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 import se.testing.maven.metaextractor.exif.FileRetriever;
 import se.testing.maven.metaextractor.logger.LoggerFactory;
