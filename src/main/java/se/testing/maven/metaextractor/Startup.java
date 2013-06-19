@@ -29,11 +29,10 @@ public class Startup {
         //retriever.fetchMetaDataFromImage(directoryLinuxMac, filter);
         retriever.fetchMetaDataFromImage(directoryLinuxMac);
 
-        String logFileName = FilePropertiesHelper.getLogNameWithPrefix();
-        Logger logger = LoggerFactory.getLogger(Level.INFO,logFileName );
+        LoggerFactory factory = LoggerFactory.getInstance();
+  
+        Logger logger = factory.getLogger();
         logger.log(Level.INFO, "INFO-1");
-        logger.log(Level.INFO, "INFO-2");
-
     }
 
     private void writeOutNameOfFiles(String directoryLinuxMac) {
