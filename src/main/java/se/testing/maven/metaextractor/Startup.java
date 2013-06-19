@@ -39,11 +39,4 @@ public class Startup {
     private void writeOutNameOfFiles(String directoryLinuxMac) {
         ListFilesUtil.listFiles(directoryLinuxMac);
     }
-
-    private static String getFormattedDate() {
-        Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        String formattedDate = format.format(date);
-        return formattedDate;
-    }
 }
