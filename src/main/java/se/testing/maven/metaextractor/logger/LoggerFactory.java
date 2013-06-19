@@ -32,6 +32,7 @@ public class LoggerFactory {
         }
         return instance;
     }
+    
 
     public Logger getLogger() {
         String filename = FilePropertiesHelper.getLogNameWithPrefix();

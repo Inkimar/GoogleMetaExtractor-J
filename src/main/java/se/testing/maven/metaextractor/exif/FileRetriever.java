@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.testing.maven.metaextractor.ListFilesUtil;
 import se.testing.maven.metaextractor.Startup;
+import se.testing.maven.metaextractor.logger.LoggerFactory;
 
 /**
  *
@@ -22,50 +23,53 @@ import se.testing.maven.metaextractor.Startup;
 public class FileRetriever {
 
     public List fetchMetaDataFromImage(String directoryLinuxMac, String filter) {
-        System.out.println("Fetching Files");
+        logging( directoryLinuxMac,filter);
+
         File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
         List<String> list = new ArrayList<>();
-        
+
         boolean isFilteredFromUnknown = true;
 
         for (File file : files) {
-                if (file.isFile() && file.getName().contains(filter)) {
-                    System.out.println(file.getName());
-                    try {
-                        Metadata metadata = ImageMetadataReader.readMetadata(file);
-                        ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
-                        list = getAllTags(metadata, isFilteredFromUnknown);
+            if (file.isFile() && file.getName().contains(filter)) {
+                System.out.println(file.getName());
+                try {
+                    Metadata metadata = ImageMetadataReader.readMetadata(file);
+                    ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
+                    list = getAllTags(metadata, isFilteredFromUnknown);
 
-                    } catch (ImageProcessingException | IOException ex) {
-                        Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                } catch (ImageProcessingException | IOException ex) {
+                    Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            
+            }
+
         }
 
         System.out.println("List is " + list);
         return list;
     }
+
     public List fetchMetaDataFromImage(String directoryLinuxMac) {
-        System.out.println("Fetching Files");
+        logging( directoryLinuxMac,"");
+        
         File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
         List<String> list = new ArrayList<>();
-        
+
         boolean isFilteredFromUnknown = true;
 
         for (File file : files) {
-                if (file.isFile()) {
-                    System.out.println(file.getName());
-                    try {
-                        Metadata metadata = ImageMetadataReader.readMetadata(file);
-                        ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
-                        list = getAllTags(metadata, isFilteredFromUnknown);
+            if (file.isFile()) {
+                System.out.println(file.getName());
+                try {
+                    Metadata metadata = ImageMetadataReader.readMetadata(file);
+                    ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
+                    list = getAllTags(metadata, isFilteredFromUnknown);
 
-                    } catch (ImageProcessingException | IOException ex) {
-                        Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                } catch (ImageProcessingException | IOException ex) {
+                    Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            
+            }
+
         }
 
         System.out.println("List is " + list);
@@ -83,7 +87,7 @@ public class FileRetriever {
         List<String> tagList = new ArrayList<>();
         for (Directory directory : metadata.getDirectories()) {
             for (Tag tag : directory.getTags()) {
-                System.out.println("tag is : " +tag);
+                System.out.println("tag is : " + tag);
                 String tagName = tag.getTagName();
 
                 if (isFiltered) {
@@ -96,5 +100,13 @@ public class FileRetriever {
             }
         }
         return tagList;
+    }
+
+    private void logging(String directoryLinuxMac,String filter) {
+       LoggerFactory factory = LoggerFactory.getInstance();
+       Logger logger = factory.getLogger();
+       logger.log(Level.INFO, "Fetching files");
+       logger.log(Level.INFO, "from directory :{0}", directoryLinuxMac);
+       logger.log(Level.INFO, "from directory :{0}", filter);
     }
 }
