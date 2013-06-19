@@ -42,7 +42,7 @@ public class FileRetriever {
                 } catch (ImageProcessingException | IOException ex) {
                     Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                break;
+               // break;
             }
         }
 
