@@ -22,31 +22,30 @@ import se.testing.maven.metaextractor.util.FilePropertiesHelper;
  */
 public class FileRetriever {
 
-    public void test(String directoryLinuxMac) {
+    public List fetchMetaDataFromImage(String directoryLinuxMac, String filter) {
         System.out.println("Fetching Files");
         File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
-
-        final String filter = FilePropertiesHelper.getImageFilter();
-
         List<String> list = new ArrayList<>();
-        boolean filtered = true;
+        
+        boolean isFilteredFromUnknown = true;
 
         for (File file : files) {
-            if (file.isFile() && file.getName().contains(filter)) {
-                System.out.println(file.getName());
-                try {
-                    Metadata metadata = ImageMetadataReader.readMetadata(file);
-                    ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
-                    list = getAllTags(metadata, filtered);
+                if (file.isFile() && file.getName().contains(filter)) {
+                    System.out.println(file.getName());
+                    try {
+                        Metadata metadata = ImageMetadataReader.readMetadata(file);
+                        ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
+                        list = getAllTags(metadata, isFilteredFromUnknown);
 
-                } catch (ImageProcessingException | IOException ex) {
-                    Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ImageProcessingException | IOException ex) {
+                        Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-               // break;
-            }
+            
         }
 
         System.out.println("List is " + list);
+        return list;
     }
 
     private ExifSubIFDDirectory getExifDirectory(Metadata metadata) {
@@ -60,7 +59,7 @@ public class FileRetriever {
         List<String> tagList = new ArrayList<>();
         for (Directory directory : metadata.getDirectories()) {
             for (Tag tag : directory.getTags()) {
-                System.out.println(tag);
+                System.out.println("tag is : " +tag);
                 String tagName = tag.getTagName();
 
                 if (isFiltered) {
@@ -68,7 +67,7 @@ public class FileRetriever {
                         tagList.add(tagName);
                     }
                 } else {
-                     tagList.add(tagName);
+                    tagList.add(tagName);
                 }
             }
         }
