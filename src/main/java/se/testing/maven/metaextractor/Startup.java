@@ -28,11 +28,6 @@ public class Startup {
 
         //retriever.fetchMetaDataFromImage(directoryLinuxMac, filter);
         retriever.fetchMetaDataFromImage(directoryLinuxMac);
-
-        LoggerFactory factory = LoggerFactory.getInstance();
-  
-        Logger logger = factory.getLogger();
-        logger.log(Level.INFO, "INFO-1");
     }
 
     private void writeOutNameOfFiles(String directoryLinuxMac) {
