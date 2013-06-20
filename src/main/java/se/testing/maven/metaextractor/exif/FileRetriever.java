@@ -7,14 +7,11 @@ import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.testing.maven.metaextractor.ListFilesUtil;
@@ -38,12 +35,12 @@ public class FileRetriever {
             if (file.isFile() && file.getName().contains(filter)) {
                 System.out.println(file.getName());
                 try {
-                    Metadata metadata = ImageMetadataReader.readMetadata(file);
-                    ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
-                    list = getAllTags(metadata, isFilteredFromUnknown);
+                    list = getAllTags(file, isFilteredFromUnknown);
 
                 } catch (ImageProcessingException | IOException ex) {
                     Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(FileRetriever.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -63,13 +60,11 @@ public class FileRetriever {
                 String filename = file.getName();
                 System.out.println(filename); // prints out the name of the file inlcudes suffix
                 try {
-                    Metadata metadata = ImageMetadataReader.readMetadata(file);
-                    ExifSubIFDDirectory exifDirectory = getExifDirectory(metadata);
-
-                    list = getAllTags(metadata, isFilteredFromUnknown);
-
+                    list = getAllTags(file, isFilteredFromUnknown);
                 } catch (ImageProcessingException | IOException ex) {
                     Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(FileRetriever.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -90,8 +85,8 @@ public class FileRetriever {
      * @param isFiltered
      * @return only the present tags.
      */
-    private List<String> getAllTags(Metadata metadata, boolean isFiltered) {
-
+    private List<String> getAllTags(File file, boolean isFiltered) throws Exception {
+        Metadata metadata = ImageMetadataReader.readMetadata(file);
         List<String> tagList = new ArrayList<>();
         LinkedHashMap<String, String> map = Maps.newLinkedHashMap();
         for (Directory directory : metadata.getDirectories()) {
@@ -122,13 +117,14 @@ public class FileRetriever {
      * @param isFiltered
      * @return only the present tags.
      */
-    private LinkedHashMap<String, String> getMappedTags(Metadata metadata, boolean isFiltered) {
-
+    
+    // ska vara private, protected så att jag kan test - möjligt att testa private metoder med groovy ...
+    protected LinkedHashMap<String, String> getMappedTags(File file, boolean isFiltered) throws Exception {
+        Metadata metadata = ImageMetadataReader.readMetadata(file);
         LinkedHashMap<String, String> map = Maps.newLinkedHashMap();
         for (Directory directory : metadata.getDirectories()) {
             for (Tag tag : directory.getTags()) {
                 String tagName = tag.getTagName();
-
                 String tagDescription = tag.getDescription();
 
                 if (isFiltered) {

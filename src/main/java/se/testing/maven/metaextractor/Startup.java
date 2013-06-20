@@ -1,12 +1,7 @@
 package se.testing.maven.metaextractor;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 import se.testing.maven.metaextractor.exif.FileRetriever;
-import se.testing.maven.metaextractor.logger.LoggerFactory;
 
 /**
  * Credit to : http://java.dzone.com/articles/java-example-list-all-files
