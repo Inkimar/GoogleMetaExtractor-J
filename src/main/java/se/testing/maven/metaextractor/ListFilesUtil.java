@@ -9,6 +9,11 @@ import java.util.List;
  */
 public class ListFilesUtil {
 
+    public static String DELIMITER_CATALOGNUMBER = "_";
+
+    // a dot is a reserved character in regular expression, must write like this.
+    public static String DELIMITER_VIEW = "\\.";
+
     /**
      * List all the files and folders from a directory
      *
@@ -23,9 +28,8 @@ public class ListFilesUtil {
         }
     }
 
-  
     /**
-     * 
+     *
      * @param fList list of files to be printed
      */
     public static void printFileNamesToConsole(File[] fList) {
@@ -41,10 +45,26 @@ public class ListFilesUtil {
         File[] fList = getFileListInFolder(directoryName);
         return fList.length;
     }
-    
-    public static HashMap<String,List> parseFiles(String directoryName){
+
+    public static HashMap<String, List> parseFiles(String directoryName) {
         File[] fileListInFolder = getFileListInFolder(directoryName);
         return null;
+    }
+
+    protected static String getCatalogeNumberFromFile(String[] fragments) {
+        String catalogNumber = fragments[0];
+        return catalogNumber;
+    }
+
+    protected static String getViewFromFile(String[] fragments) {
+        String viewAndSuffix = fragments[1];
+        String[] fragment = parseString(viewAndSuffix, ListFilesUtil.DELIMITER_VIEW);
+        return fragment[0];
+    }
+
+    protected static String[] parseString(String name, String delimiter) {
+        String[] split = name.split(delimiter);
+        return split;
     }
 
     /**
