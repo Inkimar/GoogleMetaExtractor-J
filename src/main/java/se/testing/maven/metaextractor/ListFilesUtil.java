@@ -1,6 +1,8 @@
 package se.testing.maven.metaextractor;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Contains some methods to list files and folders from a directory
@@ -38,6 +40,11 @@ public class ListFilesUtil {
     public static int getNumberOfFiles(String directoryName) {
         File[] fList = getFileListInFolder(directoryName);
         return fList.length;
+    }
+    
+    public static HashMap<String,List> parseFiles(String directoryName){
+        File[] fileListInFolder = getFileListInFolder(directoryName);
+        return null;
     }
 
     /**
