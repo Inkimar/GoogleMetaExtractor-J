@@ -1,5 +1,6 @@
 package se.testing.maven.metaextractor;
 
+import java.io.File;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 import se.testing.maven.metaextractor.exif.FileRetriever;
 
@@ -18,12 +19,12 @@ public class Startup {
         final String directoryLinuxMac = FilePropertiesHelper.getFilePath();
         System.out.println("Path is " + directoryLinuxMac);
         final int numberOfFiles = getNumberOfFiles(directoryLinuxMac);
-        System.out.println("Number of files in directory " +numberOfFiles);
+        System.out.println("Number of files in directory " + numberOfFiles);
+
         writeOutNameOfFiles(directoryLinuxMac);
 
         // Fetches a single filter from property-file
 //        final String filter = FilePropertiesHelper.getImageFilter();
-//        System.out.println("Image filter is "+filter);
 
         // Antingen använder du ett filter ( ex. endast .CR2-bilder eller inte )
         //retriever.fetchMetaDataFromImage(directoryLinuxMac, filter);
@@ -31,7 +32,8 @@ public class Startup {
     }
 
     private static void writeOutNameOfFiles(String directoryLinuxMac) {
-        ListFilesUtil.printFileNamesToConsole(directoryLinuxMac);
+        File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
+        ListFilesUtil.printFileNamesToConsole(files);
     }
 
     private static int getNumberOfFiles(String directoryLinuxMac) {
