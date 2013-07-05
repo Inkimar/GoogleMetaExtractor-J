@@ -16,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.testing.maven.metaextractor.ListFilesUtil;
 import se.testing.maven.metaextractor.Startup;
-import se.testing.maven.metaextractor.logger.LoggerFactory;
 
 /**
  *
@@ -139,17 +138,4 @@ public class FileRetriever {
         return map;
     }
 
-    /**
-     * proof of concept. Testing the Logging-functionality, only.
-     *
-     * @param directoryLinuxMac
-     * @param filter
-     */
-    @Deprecated
-    private Logger logging() {
-        LoggerFactory factory = LoggerFactory.getInstance();
-        Logger logger = factory.getLogger();
-
-        return logger;
-    }
 }

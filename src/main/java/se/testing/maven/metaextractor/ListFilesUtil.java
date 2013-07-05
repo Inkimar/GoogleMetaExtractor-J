@@ -29,16 +29,25 @@ public class ListFilesUtil {
      *
      * @param directoryName to be listed
      */
-    public static void listFiles(String directoryName) {
+    public static void printFileNamesToConsole(String directoryName) {
 
-        File directory = new File(directoryName);
-        File[] fList = directory.listFiles();
+         File[] fList = getFileListInFolder(directoryName);
 
         for (File file : fList) {
             if (file.isFile()) {
                 System.out.println(file.getName());
             }
         }
+    }
+    
+    public static int getNumberOfFiles(String directoryName){
+        File[] fList = getFileListInFolder(directoryName);
+        return fList.length;
+    }
+    
+    private static File[] getFileListInFolder(String directoryName){
+        File directory = new File(directoryName);
+        return directory.listFiles();
     }
 
     /**

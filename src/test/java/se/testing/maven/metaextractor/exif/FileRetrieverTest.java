@@ -37,7 +37,6 @@ public class FileRetrieverTest {
 
             LinkedHashMap<String, String> map = instance.getMappedTags(file, true);
             assertEquals("Canon", map.get("Make"));
-            assertTrue(map.containsKey("Make"));
             assertTrue(map.containsKey("Artist"));
             assertTrue(map.containsValue("Gunvi Lindberg"));
 
