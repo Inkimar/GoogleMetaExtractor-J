@@ -38,6 +38,7 @@ public class FilePropertiesHelperTest {
         expResult.add(".tif"); // See config.properties
         expResult.add(".CR2");
         List result = FilePropertiesHelper.getImageFilters();
+        
         assertEquals(expResult, result);
        
     }

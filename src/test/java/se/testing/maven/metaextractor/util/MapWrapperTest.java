@@ -20,10 +20,10 @@ public class MapWrapperTest {
     public MapWrapperTest() {
     }
 
-    @Test @Ignore
-    public void ADD_1_VIEW_TO_ONE_KEY_Map() {
-        System.out.println("ADD_1_VIEW_TO_ONE_KEY_Map");
-        MapWrapper instance = MapWrapper.getInstance();
+    @Test
+    public void oneViewOneKey() {
+        System.out.println("one view one key");
+       MapWrapper firstInstance = new MapWrapper();
 
         final String commonKey = "NHRS-GULI000004114";
         final String value = "face";
@@ -31,8 +31,8 @@ public class MapWrapperTest {
         Map<String, String> incomingMap = new HashMap<>();
         incomingMap.put(commonKey, value);
 
-        instance.transformMap(incomingMap);
-        Map<String, List<String>> bigMap = instance.getMap();
+        firstInstance.transformMap(incomingMap);
+        Map<String, List<String>> bigMap = firstInstance.getMap();
 
         assertTrue(bigMap.containsKey(commonKey));
 
@@ -43,15 +43,18 @@ public class MapWrapperTest {
         assertTrue(views.contains(value));
 
         int viewSize = views.size();
+        for (String view : views) {
+        System.out.println("1st test "+view);
+            
+        }
         assertEquals(1, viewSize);
 
-        instance.close();
     }
 
     @Test
-    public void ADD_2_VIEWS_TO_ONE_KEY_Map() {
-        System.out.println("ADD_2_VIEW_TO_ONE_KEY_Map");
-        MapWrapper instance = MapWrapper.getInstance();
+    public void twoViewsOneKey() {
+        System.out.println("two views one key");
+        MapWrapper secondInstance = new MapWrapper();
 
         final String commonKey = "NHRS-GULI000004114";
 
@@ -59,17 +62,17 @@ public class MapWrapperTest {
         {
             Map<String, String> faceMap = new HashMap<>();
             faceMap.put(commonKey, faceValue);
-            instance.transformMap(faceMap);
+            secondInstance.transformMap(faceMap);
         }
 
         final String dorsValue = "dors";
         {
             Map<String, String> dorsMap = new HashMap<>();
             dorsMap.put(commonKey, dorsValue); // ersatte den förra
-            instance.transformMap(dorsMap);
+            secondInstance.transformMap(dorsMap);
         }
 
-        Map<String, List<String>> bigMap = instance.getMap();
+        Map<String, List<String>> bigMap = secondInstance.getMap();
 
         assertTrue(bigMap.containsKey(commonKey));
 
@@ -78,4 +81,5 @@ public class MapWrapperTest {
         assertTrue(views.contains(faceValue));
 
     }
+    
 }

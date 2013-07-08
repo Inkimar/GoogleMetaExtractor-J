@@ -4,14 +4,13 @@
  */
 package se.testing.maven.metaextractor.util;
 
-import se.testing.maven.metaextractor.util.ListFilesUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import se.testing.maven.metaextractor.util.FilePropertiesHelper;
+import org.junit.Ignore;
 
 /**
  *
@@ -61,9 +60,8 @@ public class ListFilesUtilTest {
         assertEquals(expectedResult, view);
     }
 
-  
-    @Test
-    public void test_GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
+    @Test @Ignore
+    public void GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
         Map<String, List<String>> mapForMultipleFileName = new HashMap();
         List<String> views = new ArrayList();
 
