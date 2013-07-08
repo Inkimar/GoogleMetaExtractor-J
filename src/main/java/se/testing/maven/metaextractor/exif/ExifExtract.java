@@ -14,14 +14,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import se.testing.maven.metaextractor.ListFilesUtil;
+import se.testing.maven.metaextractor.util.ListFilesUtil;
 import se.testing.maven.metaextractor.Startup;
 
 /**
  *
  * @author ingimar
  */
-public class FileRetriever {
+public class ExifExtract {
 
     public List fetchMetaDataFromImage(String directoryLinuxMac, String filter) {
 
@@ -39,7 +39,7 @@ public class FileRetriever {
                 } catch (ImageProcessingException | IOException ex) {
                     Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
-                    Logger.getLogger(FileRetriever.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ExifExtract.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -63,7 +63,7 @@ public class FileRetriever {
                 } catch (ImageProcessingException | IOException ex) {
                     Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
-                    Logger.getLogger(FileRetriever.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ExifExtract.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }

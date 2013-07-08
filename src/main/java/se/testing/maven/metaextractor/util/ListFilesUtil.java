@@ -1,4 +1,4 @@
-package se.testing.maven.metaextractor;
+package se.testing.maven.metaextractor.util;
 
 import java.io.File;
 import java.util.HashMap;
@@ -68,9 +68,13 @@ public class ListFilesUtil {
         return split;
     }
 
-    protected Map p(String fileName, String catalogDelimiter) {
+    protected Map parseFileName(String fileName) {
+        return parseFileName(fileName, DELIMITER_CATALOGNUMBER);
+    }
+
+    protected Map parseFileName(String fileName, String delimiter) {
         Map<String, String> map = new HashMap();
-        String[] split = fileName.split(catalogDelimiter);
+        String[] split = fileName.split(delimiter);
         String cat = getCatalogeNumberFromFile(split);
         String view = getViewFromFile(split);
 

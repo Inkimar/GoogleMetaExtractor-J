@@ -1,8 +1,9 @@
 package se.testing.maven.metaextractor;
 
+import se.testing.maven.metaextractor.util.ListFilesUtil;
 import java.io.File;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
-import se.testing.maven.metaextractor.exif.FileRetriever;
+import se.testing.maven.metaextractor.exif.ExifExtract;
 
 /**
  * Credit to : http://java.dzone.com/articles/java-example-list-all-files
@@ -12,7 +13,7 @@ import se.testing.maven.metaextractor.exif.FileRetriever;
 public class Startup {
 
     public static void main(String[] args) {
-        FileRetriever retriever = new FileRetriever();
+        ExifExtract retriever = new ExifExtract();
 
         System.out.println("Main");
 

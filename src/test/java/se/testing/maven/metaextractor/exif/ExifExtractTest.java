@@ -12,23 +12,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import se.testing.maven.metaextractor.ListFilesUtil;
+import se.testing.maven.metaextractor.util.ListFilesUtil;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 
 /**
  *
  * @author ingimar
  */
-public class FileRetrieverTest {
+public class ExifExtractTest {
 
     final String fileNameSuffix = ".CR2";
 
-    public FileRetrieverTest() {
+    public ExifExtractTest() {
     }
 
     @Test
     public void testGetSingleMappedTags() {
-        FileRetriever instance = new FileRetriever();
+        ExifExtract instance = new ExifExtract();
 
         try {
             File file = getFileFilterOnSuffix();
@@ -42,7 +42,7 @@ public class FileRetrieverTest {
 
 
         } catch (Exception ex) {
-            Logger.getLogger(FileRetrieverTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExifExtractTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -52,7 +52,7 @@ public class FileRetrieverTest {
      */
     @Test
     public void mappedTags_FOR_Multiple_files() {
-        FileRetriever instance = new FileRetriever();
+        ExifExtract instance = new ExifExtract();
 
         try {
             File[] allFiles = getAllFiles();
@@ -76,7 +76,7 @@ public class FileRetrieverTest {
 
 
         } catch (Exception ex) {
-            Logger.getLogger(FileRetrieverTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExifExtractTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
