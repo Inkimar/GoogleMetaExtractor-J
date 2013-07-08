@@ -42,6 +42,9 @@ public class MapWrapper {
     public Map<String, List<String>> getMap() {
         return map;
     }
+    public List<String> get(String key){
+        return map.get(key);
+    }
 
     public int size() {
         int size = map.size();
