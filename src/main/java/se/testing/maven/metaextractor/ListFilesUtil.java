@@ -3,6 +3,7 @@ package se.testing.maven.metaextractor;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Contains some methods to list files and folders from a directory
@@ -65,6 +66,18 @@ public class ListFilesUtil {
     protected static String[] parseString(String name, String delimiter) {
         String[] split = name.split(delimiter);
         return split;
+    }
+
+    protected Map p(String fileName, String catalogDelimiter) {
+        Map<String, String> map = new HashMap();
+        String[] split = fileName.split(catalogDelimiter);
+        String cat = getCatalogeNumberFromFile(split);
+        String view = getViewFromFile(split);
+
+        map.put(cat, view);
+
+        return map;
+
     }
 
     /**
