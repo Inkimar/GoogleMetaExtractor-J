@@ -42,13 +42,28 @@ public class MapWrapper {
     public Map<String, List<String>> getMap() {
         return map;
     }
-    public List<String> get(String key){
+
+    public List<String> get(String key) {
         return map.get(key);
     }
 
     public int size() {
         int size = map.size();
         return size;
+    }
+
+    /**
+     * Hit kan jag mata alla 9000 bilderna och får tillbaka en full MapWrapper ...
+     * @param fileNames
+     * @return 
+     */
+    public static MapWrapper getPopulatedMapWrapper(List<String> fileNames) {
+        MapWrapper container = new MapWrapper();
+        for (String fileName : fileNames) {
+            Map parsed = ListFilesUtil.parseFileName(fileName);
+            container.transformMap(parsed);
+        }
+        return container;
     }
 
     public MapWrapper getThis() {

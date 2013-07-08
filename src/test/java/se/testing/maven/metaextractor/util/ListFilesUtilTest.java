@@ -15,6 +15,7 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 
 /**
+ * Using hamcreast for comparing unsorted lists. - first time, good to know -
  *
  * @author ingimar
  */
@@ -59,12 +60,8 @@ public class ListFilesUtilTest {
         File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
         List<String> fileNames = ListFilesUtil.getFileNames(files);
 
-        MapWrapper container = new MapWrapper();
-        for (String fileName : fileNames) {
-            Map parsed = ListFilesUtil.parseFileName(fileName);
-            container.transformMap(parsed);
-        }
-        
+        MapWrapper container = getPopulatedMapWrapper(fileNames);
+
         {// 4112
             final String actualCatKey4112 = "NHRS-GULI000004112";
             final List<String> actualCat4112Views = Arrays.asList("abdo", "dors", "face", "labe");
@@ -88,14 +85,18 @@ public class ListFilesUtilTest {
             List actual4114List = container.get(actualCat4114);
             assertThat(actualCat4114Views, containsInAnyOrder(actual4114List.toArray()));
         }
-        
+
         { //4115
             final String actualCat4115 = "NHRS-GULI000004115";
-            final List<String> actualCat4115Views = Arrays.asList("abdo", "dors", "face","labe");
+            final List<String> actualCat4115Views = Arrays.asList("abdo", "dors", "face", "labe");
 
             List actual4115List = container.get(actualCat4115);
             assertThat(actualCat4115Views, containsInAnyOrder(actual4115List.toArray()));
         }
+    }
+
+    private MapWrapper getPopulatedMapWrapper(List<String> fileNames) {
+        return MapWrapper.getPopulatedMapWrapper(fileNames);
     }
 
     /**
