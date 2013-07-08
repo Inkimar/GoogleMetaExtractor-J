@@ -1,6 +1,7 @@
 package se.testing.maven.metaextractor.util;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,11 +48,6 @@ public class ListFilesUtil {
         return fList.length;
     }
 
-    public static HashMap<String, List> parseFiles(String directoryName) {
-        File[] fileListInFolder = getFileListInFolder(directoryName);
-        return null;
-    }
-
     protected static String getCatalogeNumberFromFile(String[] fragments) {
         String catalogNumber = fragments[0];
         return catalogNumber;
@@ -68,11 +64,11 @@ public class ListFilesUtil {
         return split;
     }
 
-    protected Map parseFileName(String fileName) {
+    protected static Map parseFileName(String fileName) {
         return parseFileName(fileName, DELIMITER_CATALOGNUMBER);
     }
 
-    protected Map parseFileName(String fileName, String delimiter) {
+    protected static Map  parseFileName(String fileName, String delimiter) {
         Map<String, String> map = new HashMap();
         String[] split = fileName.split(delimiter);
         String cat = getCatalogeNumberFromFile(split);
@@ -92,6 +88,14 @@ public class ListFilesUtil {
     public static File[] getFiles(String directoryName) {
         return getFileListInFolder(directoryName);
     }
+    
+    public static List<String> getFileNames(File [] files){
+        List <String> fileNames = new ArrayList<>();
+        for (File file : files) {
+            fileNames.add(file.getName());
+        }
+        return fileNames;
+    }
 
     /**
      * List all the folder under a directory
@@ -108,26 +112,25 @@ public class ListFilesUtil {
         }
     }
 
+    private static File[] getFileListInFolder(String directoryName) {
+        File directory = new File(directoryName);
+        return directory.listFiles();
+    }
     /**
      * List all files from a directory and its subdirectories
      *
      * @param directoryName to be listed
      */
-    public void listFilesAndFilesSubDirectories(String directoryName) {
-
-        File[] fList = getFileListInFolder(directoryName);
-
-        for (File file : fList) {
-            if (file.isFile()) {
-                System.out.println(file.getAbsolutePath());
-            } else if (file.isDirectory()) {
-                listFilesAndFilesSubDirectories(file.getAbsolutePath());
-            }
-        }
-    }
-
-    private static File[] getFileListInFolder(String directoryName) {
-        File directory = new File(directoryName);
-        return directory.listFiles();
-    }
+//    public void listFilesAndFilesSubDirectories(String directoryName) {
+//
+//        File[] fList = getFileListInFolder(directoryName);
+//
+//        for (File file : fList) {
+//            if (file.isFile()) {
+//                System.out.println(file.getAbsolutePath());
+//            } else if (file.isDirectory()) {
+//                listFilesAndFilesSubDirectories(file.getAbsolutePath());
+//            }
+//        }
+//    }
 }

@@ -17,7 +17,7 @@ public class Startup {
 
         System.out.println("Main");
 
-        final String directoryLinuxMac = FilePropertiesHelper.getFilePath();
+        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
         System.out.println("Path is " + directoryLinuxMac);
         final int numberOfFiles = getNumberOfFiles(directoryLinuxMac);
         System.out.println("Number of files in directory " + numberOfFiles);

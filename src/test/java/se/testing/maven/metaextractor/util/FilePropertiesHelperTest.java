@@ -6,8 +6,6 @@ package se.testing.maven.metaextractor.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,16 +14,26 @@ import static org.junit.Assert.*;
  * @author ingimar
  */
 public class FilePropertiesHelperTest {
-    
+
     public FilePropertiesHelperTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
+
+    @Test
+    public void TEST_EXISTENCE_OF_IMAGE_DIR_IN_PROPERTY_FILE() {
+        final String expectedResult = "/home/ingimar/tmp/test-images/From-gunvi-17juni";
+
+        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
+        assertEquals(expectedResult, directoryLinuxMac);
+
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
+
+    @Test
+    public void TEST_EXISTENCE_OF_TOP_LEVEL_DIR_IN_PROPERTY_FILE() {
+        final String expectedResult = "/home/ingimar/tmp/test-images";
+
+        final String directoryLinuxMac = FilePropertiesHelper.getTopLevelFilePath();
+        assertEquals(expectedResult, directoryLinuxMac);
+
     }
 
     /**
@@ -38,8 +46,8 @@ public class FilePropertiesHelperTest {
         expResult.add(".tif"); // See config.properties
         expResult.add(".CR2");
         List result = FilePropertiesHelper.getImageFilters();
-        
+
         assertEquals(expResult, result);
-       
+
     }
 }

@@ -3,7 +3,6 @@ package se.testing.maven.metaextractor.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Properties;
  */
 public class FilePropertiesHelper {
 
-    public static String getFilePath() {
+    public static String getImagesFilePath() {
 
         String filePath = "";
         Properties properties = new Properties();
@@ -24,7 +23,23 @@ public class FilePropertiesHelper {
         try {
             InputStream iStream = getInputStream();
             properties.load(iStream);
-            filePath = properties.getProperty("images.filepath");
+            filePath = properties.getProperty("filepath.images");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return filePath;
+    }
+
+    public static String getTopLevelFilePath() {
+
+        String filePath = "";
+        Properties properties = new Properties();
+
+        try {
+            InputStream iStream = getInputStream();
+            properties.load(iStream);
+            filePath = properties.getProperty("filepath.top");
         } catch (IOException e) {
             e.printStackTrace();
         }

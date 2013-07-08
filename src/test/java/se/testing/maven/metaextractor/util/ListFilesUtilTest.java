@@ -4,10 +4,13 @@
  */
 package se.testing.maven.metaextractor.util;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
@@ -22,15 +25,7 @@ public class ListFilesUtilTest {
         System.out.println("Testing");
     }
 
-    @Test
-    public void TEST_EXISTENCE_OF_DIR_IN_PROPERTY_FILE() {
-        String expectedResult = "/home/ingimar/tmp/test-images/From-gunvi-17juni";
-
-        final String directoryLinuxMac = FilePropertiesHelper.getFilePath();
-        assertEquals(expectedResult, directoryLinuxMac);
-        String directoryName = "";
-        ListFilesUtil.parseFiles(directoryName);
-    }
+ 
 
     final private String fileNameWithFaceView = "NHRS-GULI000004114_face.tif";
 
@@ -60,15 +55,28 @@ public class ListFilesUtilTest {
         assertEquals(expectedResult, view);
     }
 
-    @Test @Ignore
+    @Test
     public void GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
-        Map<String, List<String>> mapForMultipleFileName = new HashMap();
-        List<String> views = new ArrayList();
 
-        // face
-        String faceFile = "NHRS-GULI000004114_face.tif";
-        String expectedCatalogResult = "NHRS-GULI000004114";
-        String expectedViewResult = "face";
+        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
+        File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
+        List<String> fileNames = ListFilesUtil.getFileNames(files);
+
+        MapWrapper container = new MapWrapper();
+        for (String fileName : fileNames) {
+            Map parsed = ListFilesUtil.parseFileName(fileName);
+            container.transformMap(parsed);
+        }
+        String cat4112 ="NHRS-GULI000004112";
+        String cat4113 ="NHRS-GULI000004113";
+        String cat4114 ="NHRS-GULI000004114";
+        String cat4115 ="NHRS-GULI000004115";
+        
+        List<String> catalogList = Arrays.asList(cat4112,cat4113,cat4114,cat4115);
+        
+        assertEquals(catalogList.size(), container.size());
+        
+        
 
 
     }
