@@ -11,12 +11,8 @@ import java.util.List;
 import java.util.Map;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static org.hamcrest.core.Is.*;
 import static org.junit.Assert.assertThat;
-import static org.junit.matchers.JUnitMatchers.hasItems;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import org.junit.Ignore;
 
 /**
  *
@@ -57,7 +53,6 @@ public class ListFilesUtilTest {
     }
 
     @Test
-    // @Ignore
     public void GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
 
         final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
