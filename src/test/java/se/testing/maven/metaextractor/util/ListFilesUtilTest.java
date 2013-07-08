@@ -57,7 +57,7 @@ public class ListFilesUtilTest {
     }
 
     @Test
-   // @Ignore
+    // @Ignore
     public void GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
 
         final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
@@ -69,28 +69,38 @@ public class ListFilesUtilTest {
             Map parsed = ListFilesUtil.parseFileName(fileName);
             container.transformMap(parsed);
         }
-        final String expectedCatKey4112 = "NHRS-GULI000004112";
-        final List<String> actualCat4112Views = Arrays.asList("abdo", "dors", "face", "labe");
+        
+        {// 4112
+            final String actualCatKey4112 = "NHRS-GULI000004112";
+            final List<String> actualCat4112Views = Arrays.asList("abdo", "dors", "face", "labe");
 
-        final String actualCat4113 = "NHRS-GULI000004113";
-        final List<String> actualCat4113Views;
-        final String actualCat4114 = "NHRS-GULI000004114";
-        final List<String> actualCat4114Views;
-        final String actualCat4115 = "NHRS-GULI000004115";
-        final List<String> actualCat4115Views;
+            List actual4112List = container.get(actualCatKey4112);
+            assertThat(actualCat4112Views, containsInAnyOrder(actual4112List.toArray()));
+        }
 
-        List<String> catalogList = Arrays.asList(expectedCatKey4112, actualCat4113, actualCat4114, actualCat4115);
+        {  // 4113
+            final String actualCat4113 = "NHRS-GULI000004113";
+            final List<String> actualCat4113Views = Arrays.asList("dors", "labe", "vent");
 
-        // To see if we have the four catalognumbers
-        assertEquals(catalogList.size(), container.size());
-       
-        // 4112
-        List containerList = container.get(expectedCatKey4112);
+            List actual4113List = container.get(actualCat4113);
+            assertThat(actualCat4113Views, containsInAnyOrder(actual4113List.toArray()));
+        }
 
-        assertThat(actualCat4112Views, containsInAnyOrder(containerList.toArray()));
+        { //4114
+            final String actualCat4114 = "NHRS-GULI000004114";
+            final List<String> actualCat4114Views = Arrays.asList("abdo", "dors", "face", "labe");
 
+            List actual4114List = container.get(actualCat4114);
+            assertThat(actualCat4114Views, containsInAnyOrder(actual4114List.toArray()));
+        }
+        
+        { //4115
+            final String actualCat4115 = "NHRS-GULI000004115";
+            final List<String> actualCat4115Views = Arrays.asList("abdo", "dors", "face","labe");
 
-
+            List actual4115List = container.get(actualCat4115);
+            assertThat(actualCat4115Views, containsInAnyOrder(actual4115List.toArray()));
+        }
     }
 
     /**
