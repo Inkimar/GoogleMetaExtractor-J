@@ -16,20 +16,11 @@ public class MapWrapper {
         map = new HashMap<>();
     }
 
-//    public static MapWrapper getInstance() {
-//        if (instance == null) {
-//            instance = new MapWrapper();
-//        }
-//        return instance;
-//    }
-
-
 
     public void transformMap(Map<String, String> incomingMap) {
         Set<String> keySet = incomingMap.keySet();
+        
         for (String key : keySet) {
-
-            // Nyckeln finns
             if (map.containsKey(key)) {
                 List<String> existingList = map.get(key);
                 String value = incomingMap.get(key);
@@ -43,6 +34,12 @@ public class MapWrapper {
             }
         }
     }
+    
+    public void addToWrapper(String key, String value) {
+        Map<String, String> map = new HashMap<>();
+        map.put(key, value);
+        transformMap(map);
+    }
 
     public Map<String, List<String>> getMap() {
         return map;
@@ -51,5 +48,8 @@ public class MapWrapper {
     public int size() {
         int size = map.size();
         return size;
+    }
+    public MapWrapper getThis(){
+        return this;
     }
 }
