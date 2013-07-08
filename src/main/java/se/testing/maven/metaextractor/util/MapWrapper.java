@@ -10,16 +10,14 @@ public class MapWrapper {
 
     private Map<String, List<String>> map;
 
-    private static MapWrapper instance = null;
-
+//    private static MapWrapper instance = null;
     public MapWrapper() {
         map = new HashMap<>();
     }
 
-
     public void transformMap(Map<String, String> incomingMap) {
         Set<String> keySet = incomingMap.keySet();
-        
+
         for (String key : keySet) {
             if (map.containsKey(key)) {
                 List<String> existingList = map.get(key);
@@ -34,7 +32,7 @@ public class MapWrapper {
             }
         }
     }
-    
+
     public void addToWrapper(String key, String value) {
         Map<String, String> map = new HashMap<>();
         map.put(key, value);
@@ -49,7 +47,8 @@ public class MapWrapper {
         int size = map.size();
         return size;
     }
-    public MapWrapper getThis(){
+
+    public MapWrapper getThis() {
         return this;
     }
 }
