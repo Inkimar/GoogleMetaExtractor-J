@@ -59,7 +59,7 @@ public class ListFilesUtilTest {
         Map map = ListFilesUtil.parseFileName(FILENAME_WITH_NO_VIEW);
 
         assertTrue(map.containsKey(expectedCatalogNumber));
-        assertEquals("no-view", map.get(expectedCatalogNumber));
+        assertEquals(ListFilesUtil.NO_VIEW, map.get(expectedCatalogNumber));
     }
 
     @Test

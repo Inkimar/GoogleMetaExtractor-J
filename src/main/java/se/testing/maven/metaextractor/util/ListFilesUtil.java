@@ -17,6 +17,8 @@ public class ListFilesUtil {
     // a dot is a reserved character in regular expression, must write like this.
     final public static String DELIMITER_VIEW = "\\.";
 
+    final public static String NO_VIEW = "no-view";
+
     /**
      * List all the files and folders from a directory
      *
@@ -86,8 +88,9 @@ public class ListFilesUtil {
         } else { // If the is no underscore but a dot
              String[] split = fileName.split(DELIMITER_VIEW);
              String cat = getCatalogeNumberFromFile(split);
+            
              
-             map.put(cat, "no-view");
+             map.put(cat, NO_VIEW);
         }
 
         return map;
