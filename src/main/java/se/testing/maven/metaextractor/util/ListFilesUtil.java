@@ -74,28 +74,28 @@ public class ListFilesUtil {
         return parseFileName(fileName, DELIMITER_CATALOGNUMBER);
     }
 
-    
     protected static Map parseFileName(String fileName, String delimiter) {
         Map<String, String> map = new HashMap();
-        
+
         // If there is an underscore 
         if (fileName.contains(delimiter)) {
             String[] split = fileName.split(delimiter);
             String cat = getCatalogeNumberFromFile(split);
             String view = getViewFromFile(split);
 
+            
             map.put(cat, view);
         } else { // If the is no underscore but a dot
-             String[] split = fileName.split(DELIMITER_VIEW);
-             String cat = getCatalogeNumberFromFile(split);
-            
-             
-             map.put(cat, NO_VIEW);
+            String[] split = fileName.split(DELIMITER_VIEW);
+            String cat = getCatalogeNumberFromFile(split);
+
+            map.put(cat, NO_VIEW);
         }
 
         return map;
-
     }
+   
+    
 
     /**
      * Returns all the files under a directory
