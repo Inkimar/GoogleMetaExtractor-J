@@ -10,7 +10,6 @@ public class MapWrapper {
 
     private Map<String, List<String>> map;
 
-//    private static MapWrapper instance = null;
     public MapWrapper() {
         map = new HashMap<>();
     }
@@ -59,12 +58,9 @@ public class MapWrapper {
      */
     public static MapWrapper getPopulatedMapWrapper(List<String> fileNames) {
         MapWrapper container = new MapWrapper();
-        int count = 0;
         for (String fileName : fileNames) {
-            count++;
             Map parsed = ListFilesUtil.parseFileName(fileName);
             container.transformMap(parsed);
-            System.out.println("count is "+count);
         }
         return container;
     }
