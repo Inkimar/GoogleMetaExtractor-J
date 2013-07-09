@@ -11,10 +11,11 @@ import java.util.Map;
  */
 public class ListFilesUtil {
 
-    public static String DELIMITER_CATALOGNUMBER = "_";
+    // The delimiter between catalogNumber and view.
+    final public static String DELIMITER_CATALOGNUMBER = "_";
 
     // a dot is a reserved character in regular expression, must write like this.
-    public static String DELIMITER_VIEW = "\\.";
+    final public static String DELIMITER_VIEW = "\\.";
 
     /**
      * List all the files and folders from a directory
@@ -35,10 +36,13 @@ public class ListFilesUtil {
      * @param fList list of files to be printed
      */
     public static void printFileNamesToConsole(File[] fList) {
+        int count = 0;
 
         for (File file : fList) {
+
             if (file.isFile()) {
-                System.out.println(file.getName());
+                count++;
+                System.out.println(count + " : " + file.getName());
             }
         }
     }
@@ -68,13 +72,23 @@ public class ListFilesUtil {
         return parseFileName(fileName, DELIMITER_CATALOGNUMBER);
     }
 
-    protected static Map  parseFileName(String fileName, String delimiter) {
+    
+    protected static Map parseFileName(String fileName, String delimiter) {
         Map<String, String> map = new HashMap();
-        String[] split = fileName.split(delimiter);
-        String cat = getCatalogeNumberFromFile(split);
-        String view = getViewFromFile(split);
+        
+        // If there is an underscore 
+        if (fileName.contains(delimiter)) {
+            String[] split = fileName.split(delimiter);
+            String cat = getCatalogeNumberFromFile(split);
+            String view = getViewFromFile(split);
 
-        map.put(cat, view);
+            map.put(cat, view);
+        } else { // If the is no underscore but a dot
+             String[] split = fileName.split(DELIMITER_VIEW);
+             String cat = getCatalogeNumberFromFile(split);
+             
+             map.put(cat, "no-view");
+        }
 
         return map;
 
@@ -88,9 +102,9 @@ public class ListFilesUtil {
     public static File[] getFiles(String directoryName) {
         return getFileListInFolder(directoryName);
     }
-    
-    public static List<String> getFileNames(File [] files){
-        List <String> fileNames = new ArrayList<>();
+
+    public static List<String> getFileNames(File[] files) {
+        List<String> fileNames = new ArrayList<>();
         for (File file : files) {
             fileNames.add(file.getName());
         }

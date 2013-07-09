@@ -59,9 +59,12 @@ public class MapWrapper {
      */
     public static MapWrapper getPopulatedMapWrapper(List<String> fileNames) {
         MapWrapper container = new MapWrapper();
+        int count = 0;
         for (String fileName : fileNames) {
+            count++;
             Map parsed = ListFilesUtil.parseFileName(fileName);
             container.transformMap(parsed);
+            System.out.println("count is "+count);
         }
         return container;
     }

@@ -23,7 +23,7 @@ public class Startup {
         final int numberOfFiles = getNumberOfFiles(directoryLinuxMac);
         System.out.println("Number of files in directory " + numberOfFiles);
 
-      //   writeOutNameOfFiles(directoryLinuxMac);
+       writeOutNameOfFiles(directoryLinuxMac);
         
         MapWrapper container = populateMapWrapper(directoryLinuxMac);
         System.out.println("");

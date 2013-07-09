@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
@@ -40,6 +41,28 @@ public class ListFilesUtilTest {
     }
 
     @Test
+    public void parse_Filename_With_View() {
+        String fileNameWith_labe_View = "NHRS-GULI000004114_labe.tif";
+        String expectedCatalogNumber = "NHRS-GULI000004114";
+        String expectedView = "labe";
+        Map map = ListFilesUtil.parseFileName(fileNameWith_labe_View);
+
+        assertTrue(map.containsKey(expectedCatalogNumber));
+        assertEquals(expectedView, map.get(expectedCatalogNumber));
+    }
+
+    @Test
+    public void parse_Filename_With_NO_View() {
+        // det saknas 'under_score'
+        final String FILENAME_WITH_NO_VIEW = "NHRS-GULI000004114.tif";
+        String expectedCatalogNumber = "NHRS-GULI000004114";
+        Map map = ListFilesUtil.parseFileName(FILENAME_WITH_NO_VIEW);
+
+        assertTrue(map.containsKey(expectedCatalogNumber));
+        assertEquals("no-view", map.get(expectedCatalogNumber));
+    }
+
+    @Test
     public void GET_VIEW_FROM_FileName() {
         String expectedResult = "face";
         System.out.println("expected " + expectedResult);
@@ -55,7 +78,7 @@ public class ListFilesUtilTest {
     @Test
     public void GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
 
-        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
+        final String directoryLinuxMac = FilePropertiesHelper.getTestImagesFilePath();
         File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
         List<String> fileNames = ListFilesUtil.getFileNames(files);
 
