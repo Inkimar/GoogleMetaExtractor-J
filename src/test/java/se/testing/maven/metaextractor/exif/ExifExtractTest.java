@@ -81,7 +81,7 @@ public class ExifExtractTest {
     }
 
     private File getFileFilterOnSuffix() {
-        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
+        final String directoryLinuxMac = getPathToTestFile();
         File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
         for (File file : files) {
             if (file.isFile() && file.getName().contains(fileNameSuffix)) {
@@ -92,9 +92,13 @@ public class ExifExtractTest {
     }
 
     private File[] getAllFiles() {
-        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
+        final String directoryLinuxMac = getPathToTestFile();
         File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
 
         return files;
+    }
+    
+    private String getPathToTestFile(){
+        return FilePropertiesHelper.getTestImagesFilePath();
     }
 }

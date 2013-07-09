@@ -30,6 +30,22 @@ public class FilePropertiesHelper {
 
         return filePath;
     }
+    
+     public static String getTestImagesFilePath() {
+
+        String filePath = "";
+        Properties properties = new Properties();
+
+        try {
+            InputStream iStream = getInputStream();
+            properties.load(iStream);
+            filePath = properties.getProperty("filepath.images.test");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return filePath;
+    }
 
     public static String getTopLevelFilePath() {
 

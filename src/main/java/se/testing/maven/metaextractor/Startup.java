@@ -2,8 +2,10 @@ package se.testing.maven.metaextractor;
 
 import se.testing.maven.metaextractor.util.ListFilesUtil;
 import java.io.File;
+import java.util.List;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 import se.testing.maven.metaextractor.exif.ExifExtract;
+import se.testing.maven.metaextractor.util.MapWrapper;
 
 /**
  * Credit to : http://java.dzone.com/articles/java-example-list-all-files
@@ -13,7 +15,6 @@ import se.testing.maven.metaextractor.exif.ExifExtract;
 public class Startup {
 
     public static void main(String[] args) {
-        ExifExtract retriever = new ExifExtract();
 
         System.out.println("Main");
 
@@ -22,10 +23,25 @@ public class Startup {
         final int numberOfFiles = getNumberOfFiles(directoryLinuxMac);
         System.out.println("Number of files in directory " + numberOfFiles);
 
-        writeOutNameOfFiles(directoryLinuxMac);
+      //   writeOutNameOfFiles(directoryLinuxMac);
+        
+        MapWrapper container = populateMapWrapper(directoryLinuxMac);
+        System.out.println("");
 
+
+
+    }
+
+    private static MapWrapper populateMapWrapper(String directoryLinuxMac) {
+        File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
+        List<String> fileNames = ListFilesUtil.getFileNames(files);
+        return MapWrapper.getPopulatedMapWrapper(fileNames);
+    }
+
+    private static void getMetaDate(String directoryLinuxMac) {
+        ExifExtract retriever = new ExifExtract();
         // Fetches a single filter from property-file
-//        final String filter = FilePropertiesHelper.getImageFilter();
+        final String filter = FilePropertiesHelper.getImageFilter();
 
         // Antingen använder du ett filter ( ex. endast .CR2-bilder eller inte )
         //retriever.fetchMetaDataFromImage(directoryLinuxMac, filter);
