@@ -22,7 +22,7 @@ public class FilePropertiesHelperTest {
     public void TEST_EXISTENCE_OF_IMAGE_DIR_IN_PROPERTY_FILE() {
         final String expectedResult = "/home/ingimar/tmp/test-images/From-gunvi-17juni";
 
-        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
+        final String directoryLinuxMac = FilePropertiesHelper.getTestImagesFilePath();
         assertEquals(expectedResult, directoryLinuxMac);
 
     }
