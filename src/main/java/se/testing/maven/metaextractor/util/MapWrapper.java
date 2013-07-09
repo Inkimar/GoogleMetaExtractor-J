@@ -46,15 +46,17 @@ public class MapWrapper {
         return map.get(key);
     }
 
-    public int size() {
+    public int getSizeOfCatalogNumbers() {
         int size = map.size();
         return size;
     }
 
     /**
-     * Hit kan jag mata alla 9000 bilderna och får tillbaka en full MapWrapper ...
+     * Hit kan jag mata alla 9000 bilderna och får tillbaka en full MapWrapper
+     * ...
+     *
      * @param fileNames
-     * @return 
+     * @return
      */
     public static MapWrapper getPopulatedMapWrapper(List<String> fileNames) {
         MapWrapper container = new MapWrapper();

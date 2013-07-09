@@ -3,6 +3,7 @@ package se.testing.maven.metaextractor;
 import se.testing.maven.metaextractor.util.ListFilesUtil;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 import se.testing.maven.metaextractor.exif.ExifExtract;
 import se.testing.maven.metaextractor.util.MapWrapper;
@@ -26,8 +27,8 @@ public class Startup {
        writeOutNameOfFiles(directoryLinuxMac);
         
         MapWrapper container = populateMapWrapper(directoryLinuxMac);
-        System.out.println("");
-
+        final int sizeOfCatalogNumbers = container.getSizeOfCatalogNumbers();
+        System.out.println("Size "+sizeOfCatalogNumbers);
 
 
     }
