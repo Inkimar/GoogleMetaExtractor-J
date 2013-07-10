@@ -100,9 +100,14 @@ public class FilePropertiesHelper {
         return Arrays.asList(split);
     }
 
-    public static String getLogNameWithPrefix() {
+    public static String getLogNameWithPrefix(boolean detailed) {
         String logFileName = getLogFileName();
-        String prefix = getFormattedDate();
+        String prefix;
+        if ( detailed ){
+        prefix = getDetailedFormattedDate();
+        } else {
+           prefix = getDate(); 
+        }
 
         return prefix + "-" + logFileName;
     }
@@ -123,9 +128,15 @@ public class FilePropertiesHelper {
         return fileName;
     }
 
-    private static String getFormattedDate() {
+    private static String getDetailedFormattedDate() {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        String formattedDate = format.format(date);
+        return formattedDate;
+    }
+    private static String getDate() {
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = format.format(date);
         return formattedDate;
     }

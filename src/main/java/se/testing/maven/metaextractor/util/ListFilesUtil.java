@@ -83,7 +83,7 @@ public class ListFilesUtil {
             String view = getViewFromFile(split);
 
             if (!View.contains(view) && isLogged ) { // not a part of the map now ... what should we do?
-                printoutStrangeViews(view);
+                printoutStrangeViews(fileName,view);
             } else {
 
                 map.put(cat, view);
@@ -98,9 +98,8 @@ public class ListFilesUtil {
         return map;
     }
     
-    private static void printoutStrangeViews(String view) {
-        System.out.println("strange-view is : ."+view+".");
-               
+    private static void printoutStrangeViews(String fileName,String view) {
+        Writer.writeToFile(fileName);
     }
 
     /**
