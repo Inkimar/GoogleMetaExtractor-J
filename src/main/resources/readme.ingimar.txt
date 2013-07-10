@@ -20,7 +20,26 @@ ExifExtractTest
 - Right now reading from a path,  see config-properties.
 - - filepath.images.test
 
-
+Mail sent on the 9th of July ( 2013 )
+Question about the views and soforth.
+Some other files - with an emptyspace, should be dealt with from
+the terminal, given a proper name ..... OBS <-
+strange-view is : . Palp1.
+strange-view is : . 1rst leg1.
+strange-view is : . vent.
+strange-view is : .first legs.
+strange-view is : . palp.
+strange-view is : .000001975.
+strange-view is : . Palp2.
+strange-view is : .000001957.
+strange-view is : .000001949.
+strange-view is : .000001974.
+strange-view is : .000001948.
+strange-view is : .000001947.
+strange-view is : .000001950.
+strange-view is : .000001963.
+strange-view is : .000001959.
+strange-view is : . cheli.
 Techniques new to me:
 - hamcrest is, must read more about that.
 - - used in JUnit to compare 2 unorderd lists.

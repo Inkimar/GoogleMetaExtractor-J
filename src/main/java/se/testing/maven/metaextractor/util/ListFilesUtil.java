@@ -19,6 +19,7 @@ public class ListFilesUtil {
 
     final public static String NO_VIEW = "no-view";
 
+
     /**
      * List all the files and folders from a directory
      *
@@ -83,8 +84,12 @@ public class ListFilesUtil {
             String cat = getCatalogeNumberFromFile(split);
             String view = getViewFromFile(split);
 
-            
-            map.put(cat, view);
+            if (!View.contains(view)) { // not a part of the map now ... what should we do?
+                printoutStrangeViews(view);
+            } else {
+
+                map.put(cat, view);
+            }
         } else { // If the is no underscore but a dot
             String[] split = fileName.split(DELIMITER_VIEW);
             String cat = getCatalogeNumberFromFile(split);
@@ -94,8 +99,11 @@ public class ListFilesUtil {
 
         return map;
     }
-   
     
+    private static void printoutStrangeViews(String view) {
+        System.out.println("strange-view is : ."+view+".");
+               
+    }
 
     /**
      * Returns all the files under a directory

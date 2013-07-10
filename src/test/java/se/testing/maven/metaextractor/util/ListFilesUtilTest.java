@@ -15,7 +15,8 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 
 /**
- * Using hamcreast for comparing unsorted lists. - first time, good to know -
+ * Using hamcrest for comparing unsorted lists. 
+ * - first time, good to know -
  *
  * @author ingimar
  */
@@ -35,7 +36,6 @@ public class ListFilesUtilTest {
 
         String[] parsedFileName = ListFilesUtil.parseString(fileNameWithFaceView, delimiter);
         String catalogNumber = ListFilesUtil.getCatalogeNumberFromFile(parsedFileName);
-
 
         assertEquals(expectedResult, catalogNumber);
     }
@@ -75,6 +75,14 @@ public class ListFilesUtilTest {
         assertEquals(expectedResult, view);
     }
 
+    /**
+     * Fetches Images from disk. 
+     * - with cat.nr = 
+     * NHRS-GULI000004112,
+     * NHRS-GULI000004113,
+     * NHRS-GULI000004114,
+     * NHRS-GULI000004115
+     */
     @Test
     public void GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
 
@@ -85,35 +93,35 @@ public class ListFilesUtilTest {
         MapWrapper container = getPopulatedMapWrapper(fileNames);
 
         {// 4112
-            final String actualCatKey4112 = "NHRS-GULI000004112";
-            final List<String> actualCat4112Views = Arrays.asList("abdo", "dors", "face", "labe");
+            final String key = "NHRS-GULI000004112";
+            final List<String> expectedViews = Arrays.asList("abdo", "dors", "face", "labe");
 
-            List actual4112List = container.get(actualCatKey4112);
-            assertThat(actualCat4112Views, containsInAnyOrder(actual4112List.toArray()));
+            List actualViews = container.get(key);
+            assertThat(expectedViews, containsInAnyOrder(actualViews.toArray()));
         }
 
         {  // 4113
-            final String actualCat4113 = "NHRS-GULI000004113";
-            final List<String> actualCat4113Views = Arrays.asList("dors", "labe", "vent");
+            final String key = "NHRS-GULI000004113";
+            final List<String> expectedViews = Arrays.asList("dors", "labe", "vent");
 
-            List actual4113List = container.get(actualCat4113);
-            assertThat(actualCat4113Views, containsInAnyOrder(actual4113List.toArray()));
+            List actualViews = container.get(key);
+            assertThat(expectedViews, containsInAnyOrder(actualViews.toArray()));
         }
 
         { //4114
-            final String actualCat4114 = "NHRS-GULI000004114";
-            final List<String> actualCat4114Views = Arrays.asList("abdo", "dors", "face", "labe");
+            final String key = "NHRS-GULI000004114";
+            final List<String> expectedViews = Arrays.asList("abdo", "dors", "face", "labe");
 
-            List actual4114List = container.get(actualCat4114);
-            assertThat(actualCat4114Views, containsInAnyOrder(actual4114List.toArray()));
+            List actualViews = container.get(key);
+            assertThat(expectedViews, containsInAnyOrder(actualViews.toArray()));
         }
 
         { //4115
-            final String actualCat4115 = "NHRS-GULI000004115";
-            final List<String> actualCat4115Views = Arrays.asList("abdo", "dors", "face", "labe");
+            final String key = "NHRS-GULI000004115";
+            final List<String> expectedViews = Arrays.asList("abdo", "dors", "face", "labe");
 
-            List actual4115List = container.get(actualCat4115);
-            assertThat(actualCat4115Views, containsInAnyOrder(actual4115List.toArray()));
+            List actualViews = container.get(key);
+            assertThat(expectedViews, containsInAnyOrder(actualViews.toArray()));
         }
     }
 
@@ -126,8 +134,8 @@ public class ListFilesUtilTest {
      */
     @Test
     public void TEST_HAMCREST_listTestsWithoutOrder() {
-        List<String> list1 = new ArrayList<String>();
-        List<String> list2 = new ArrayList<String>();
+        List<String> list1 = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
 
         list1.add("red");
         list1.add("green");
