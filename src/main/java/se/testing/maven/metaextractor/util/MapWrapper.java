@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Catalognr är nyckeln, äger en lista som är alla dess vyer.
+ * 
+ * @author ingimar
+ */
 public class MapWrapper {
 
     private Map<String, List<String>> map;
@@ -52,7 +57,7 @@ public class MapWrapper {
     }
 
     /**
-     * Hit kan jag mata alla 9000 bilderna och får tillbaka en full MapWrapper
+     * Hit kan jag mata alla xxxx bilderna och får tillbaka en full MapWrapper
      * ...
      *
      * @param fileNames
