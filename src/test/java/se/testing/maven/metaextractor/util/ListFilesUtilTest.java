@@ -15,8 +15,7 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 
 /**
- * Using hamcrest for comparing unsorted lists. 
- * - first time, good to know -
+ * Using hamcrest for comparing unsorted lists. - first time, good to know -
  *
  * @author ingimar
  */
@@ -59,7 +58,9 @@ public class ListFilesUtilTest {
         Map map = ListFilesUtil.parseFileName(FILENAME_WITH_NO_VIEW);
 
         assertTrue(map.containsKey(expectedCatalogNumber));
-        assertEquals(ListFilesUtil.NO_VIEW, map.get(expectedCatalogNumber));
+        
+        String expectedView = NoView.NO_VIEW.getText();
+        assertEquals(expectedView, map.get(expectedCatalogNumber));
     }
 
     @Test
@@ -76,12 +77,8 @@ public class ListFilesUtilTest {
     }
 
     /**
-     * Fetches Images from disk. 
-     * - with cat.nr = 
-     * NHRS-GULI000004112,
-     * NHRS-GULI000004113,
-     * NHRS-GULI000004114,
-     * NHRS-GULI000004115
+     * Fetches Images from disk. - with cat.nr = NHRS-GULI000004112,
+     * NHRS-GULI000004113, NHRS-GULI000004114, NHRS-GULI000004115
      */
     @Test
     public void GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
