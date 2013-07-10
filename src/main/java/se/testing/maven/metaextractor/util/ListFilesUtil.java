@@ -69,10 +69,11 @@ public class ListFilesUtil {
     }
 
     protected static Map parseFileName(String fileName) {
-        return parseFileName(fileName, DELIMITER_CATALOGNUMBER);
+        return parseFileName(fileName, DELIMITER_CATALOGNUMBER, true);
     }
 
-    protected static Map parseFileName(String fileName, String delimiter) {
+    
+    protected static Map parseFileName(String fileName, String delimiter,boolean isLogged) {
         Map<String, String> map = new HashMap();
 
         // If there is an underscore 
@@ -81,7 +82,7 @@ public class ListFilesUtil {
             String cat = getCatalogeNumberFromFile(split);
             String view = getViewFromFile(split);
 
-            if (!View.contains(view)) { // not a part of the map now ... what should we do?
+            if (!View.contains(view) && isLogged ) { // not a part of the map now ... what should we do?
                 printoutStrangeViews(view);
             } else {
 
@@ -90,7 +91,6 @@ public class ListFilesUtil {
         } else { // If the is no underscore but a dot
             String[] split = fileName.split(DELIMITER_VIEW);
             String cat = getCatalogeNumberFromFile(split);
-
           
             map.put(cat,NoView.NO_VIEW.getText());
         }
