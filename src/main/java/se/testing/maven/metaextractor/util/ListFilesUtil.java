@@ -82,6 +82,7 @@ public class ListFilesUtil {
             String cat = getCatalogeNumberFromFile(split);
             String view = getViewFromFile(split);
 
+            // all the 'allowed' ( sofar ) are in the View-ENUM-class
             if (!View.contains(view) && isLogged ) { // not a part of the map now ... what should we do?
                 printoutStrangeViews(fileName,view);
             } else {

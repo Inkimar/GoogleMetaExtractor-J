@@ -24,6 +24,8 @@ Mail sent on the 9th of July ( 2013 )
 Question about the views and soforth.
 Some other files - with an emptyspace, should be dealt with from
 the terminal, given a proper name ..... OBS <-
+
+Writing these to a txt-file now ( datumstämplat )
 strange-view is : . Palp1.
 strange-view is : . 1rst leg1.
 strange-view is : . vent.
@@ -40,6 +42,23 @@ strange-view is : .000001950.
 strange-view is : .000001963.
 strange-view is : .000001959.
 strange-view is : . cheli.
+
+2Frågor - 10Juli
+Could I locate the files with two underscore and 'mend' them with a groovy-script ?
+The faulty-file-name is -> NHRS-GULI_000001959_dors.CR2
+and should be -> NHRS-GULI000001959_dors.CR2 ?
+-  should we make some more 'checks' on the file according to how it should be ?
+- should we try to pinpoint which cat.nr has 'raw'-file ( Another map - cat.nr + cr2? )
+
+~/tmp/test-images$ cat change-file-name.groovy 
+#!/usr/bin/groovy
+def name='World'; println "change file names"
+String oldFilename = "old.txt"  
+String newFilename = "new.txt"  
+  
+new File(oldFilename).renameTo(new File(newFilename))
+
+
 Techniques new to me:
 - hamcrest is, must read more about that.
 - - used in JUnit to compare 2 unorderd lists.
