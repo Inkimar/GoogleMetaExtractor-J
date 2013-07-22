@@ -102,7 +102,7 @@ public class ListFilesUtil {
     }
     
     private static void printoutStrangeViews(String fileName,String view) {
-        Writer.writeToFile(fileName);
+        WrappedFileWriter.writeToFile(fileName);
     }
 
     /**

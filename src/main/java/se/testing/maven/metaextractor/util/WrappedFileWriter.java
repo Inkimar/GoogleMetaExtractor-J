@@ -12,7 +12,7 @@ import java.io.FileWriter;
  *
  * @author ingimar
  */
-public class Writer {
+public class WrappedFileWriter {
 
     public static void writeToFile(String text) {
         String topLevelFilePath = FilePropertiesHelper.getTopLevelFilePath();

@@ -1,5 +1,22 @@
-
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<mb:request xsi:schemaLocation="http://www.morphbank.net/mbsvc3/ http://www.morphbank.net/schema/mbsvc3.xsd" 
+            xmlns:dwc="http://rs.tdwg.org/dwc/dwcore/" xmlns:mb="http://www.morphbank.net/mbsvc3/" 
+            xmlns:dwcg="http://rs.tdwg.org/dwc/geospatial/" xmlns:dwce="http://rs.tdwg.org/dwc/dwelement/" 
+            xmlns:dwcc="http://rs.tdwg.org/dwc/curatorial/" xmlns:ns7="http://rs.tdwg.org/dwc/dwelement" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns8="http://digir.net/schema/conceptual/darwin/2003/1.0/">
+    <submitter>
+        <userId>2000033</userId>
+        <groupId>2000034</groupId>
+    </submitter>
+    <insert>
+        <submitter>
+            <userId>2000033</userId>
+            <groupId>2000034</groupId>
+        </submitter>
 <object type="Specimen">
+     <sourceId>
+                <local>local:411290</local>
+                <external>http://morphank.nrm.se/test/41129-ingimar</external>
+            </sourceId>
     <!--
             <sourceId>
                 <external>ingimar-specimen-external</external>
@@ -34,3 +51,22 @@
             <dwcc:IndividualCount>1</dwcc:IndividualCount>
             -->
         </object>
+  <object type="Image">
+            <sourceId>
+                <external>ingimar-image-external</external>
+            </sourceId>
+            <owner>
+                <userId>2000033</userId>
+                <groupId>2000034</groupId>
+            </owner>
+            <objectTypeId>Image</objectTypeId>
+            <description>ingimar testar</description>
+            <imageType>tif</imageType>
+            <originalFileName>NHRS-GULI000004115_abdo.tif</originalFileName>
+            <specimen>
+                <external>ingimar-specimen-external</external>
+            </specimen>
+            
+        </object>
+    </insert>
+</mb:request>

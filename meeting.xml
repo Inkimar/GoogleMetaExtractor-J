@@ -49,3 +49,14 @@ hur sparar vi vyn från xml-filen !?
 Check this :
 Is morphbank able to handle cr2
 - if not, can we transform cr2 to tif withoug loosing metadata ...
+
+
+Note :
+XML-Request, validating against :
+Referenced entity at "http://www.morphbank.net/schema/mbsvc3.xsd".
+Referenced entity at "http://rs.tdwg.org/dwc/tdwg_dw_core.xsd".
+Referenced entity at "http://rs.tdwg.org/dwc/tdwg_basetypes.xsd".
+Referenced entity at "http://rs.tdwg.org/dwc/tdwg_dw_element.xsd".
+Referenced entity at "http://rs.tdwg.org/dwc/tdwg_dw_geospatial.xsd".
+Referenced entity at "http://rs.tdwg.org/dwc/tdwg_basetypes.xsd".
+Referenced entity at "http://rs.tdwg.org/dwc/tdwg_dw_curatorial.xsd".
