@@ -1,0 +1,51 @@
+2013-07-19, 15:30  : Möte; Johannes + Kevin + Ingimar
+Either jpg or raw can have all the metadata.
+tif has never the full amount of metadata.
+
+Stacking :
+- adding a scalebar to the image ( saved as tif ? )
+- - jpg , you save as tif ...
+
+
+Johannes lista : 1-4
+
+spara metadata och bild ....
+
+1)
+identicalfilename.cr2 ( raw )
+identicalfilename.tif
+identicalfilename.jpg
+-> use cr2 for metadata, use tif for image
+
+2)
+identicalfilename.jpg
+identicalfilename.tif 
+-> use jpg for metadata, use tif for image
+
+3)
+identicalfilename.cr2
+identicalfilename.jpg
+-> use cr2 for metadata and image
+
+4)
+identicalfilename.cr2
+identicalfilename.tiff
+
+--> cr2 for metadata, and tif for image
+
+
+
+Egen fråga, till mig :
+
+
+Java:
+titta närmare på exif-extraction.
+får exception, beror det på filnamnet ?
+
+MB:
+hur sparar vi vyn från xml-filen !?
+
+
+Check this :
+Is morphbank able to handle cr2
+- if not, can we transform cr2 to tif withoug loosing metadata ...
