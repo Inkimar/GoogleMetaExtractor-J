@@ -4,6 +4,7 @@
  */
 package se.testing.maven.metaextractor.util;
 
+import se.testing.maven.metaextractor.util.enu.View;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

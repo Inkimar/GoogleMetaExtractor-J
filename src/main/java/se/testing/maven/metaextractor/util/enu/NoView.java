@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package se.testing.maven.metaextractor.util;
+package se.testing.maven.metaextractor.util.enu;
 
 public enum NoView {
 

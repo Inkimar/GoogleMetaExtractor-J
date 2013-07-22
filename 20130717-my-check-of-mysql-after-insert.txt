@@ -1,0 +1,19 @@
+mysql> select id,userId,dateToPublish,originalFilename from Image order by id desc limit 10;
++---------+---------+---------------+----------------------------------------------------------------------------------+
+| id      | userId  | dateToPublish | originalFilename                                                                 |
++---------+---------+---------------+----------------------------------------------------------------------------------+
+| 2000049 | 2000033 | 2014-07-17    | NHRS-GULI000004115_abdo.tif                                                      |
+
+
+Troligtvis fel i 'specimen' och följande rad:
+ <determination>
+                <external>NRM:NRHS</external>
+</determination>
+
+reply säger:
+ <status>No errors
+                No determination found for NRM:NRHS, assigned Life</status>
+<objectTypeId>Specimen</objectTypeId>
+
+Testar sen att ladda bilden:
+

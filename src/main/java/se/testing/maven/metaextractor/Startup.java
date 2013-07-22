@@ -28,6 +28,8 @@ public class Startup {
         MapWrapper container = populateMapWrapper(directoryLinuxMac);
         final int sizeOfCatalogNumbers = container.getSizeOfCatalogNumbers();
         System.out.println("Size " + sizeOfCatalogNumbers);
+        
+       // getMetaData(directoryLinuxMac);
 
 
     }
@@ -38,7 +40,7 @@ public class Startup {
         return MapWrapper.getPopulatedMapWrapper(fileNames);
     }
 
-    private static void getMetaDate(String directoryLinuxMac) {
+    private static void getMetaData(String directoryLinuxMac) {
         ExifExtract retriever = new ExifExtract();
         // Fetches a single filter from property-file
         final String filter = FilePropertiesHelper.getImageFilter();

@@ -4,6 +4,7 @@
  */
 package se.testing.maven.metaextractor.util;
 
+import se.testing.maven.metaextractor.util.enu.NoView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;

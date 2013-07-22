@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mb:request xsi:schemaLocation="http://www.morphbank.net/mbsvc3/ http://www.morphbank.net/schema/mbsvc3.xsd" xmlns:dwc="http://rs.tdwg.org/dwc/dwcore/" xmlns:mb="http://www.morphbank.net/mbsvc3/" xmlns:dwcg="http://rs.tdwg.org/dwc/geospatial/" xmlns:dwce="http://rs.tdwg.org/dwc/dwelement" xmlns:dwcc="http://rs.tdwg.org/dwc/curatorial/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <submitter>
+        <userId>2000033</userId>
+        <groupId>2000034</groupId>
+    </submitter>
+    <insert>
+        <submitter>
+            <userId>2000033</userId>
+            <groupId>2000034</groupId>
+        </submitter>
+        <object type="specimen">
+            <sourceId>
+                <local>local:411290</local>
+                <external>http://morphank.nrm.se/test/41129-ingimar</external>
+            </sourceId>
+            <owner>
+                <userId>2000033</userId>
+                <groupId>2000034</groupId>
+            </owner>
+            <dateToPublish>2013-07-15</dateToPublish>
+            <objectTypeId>Specimen</objectTypeId>
+            <externalRef type="5">
+                <label>http://morphank.nrm.se/test/41129-ingimar</label>
+                <urlData>http://morphank.nrm.se/test/41129-ingimar</urlData>
+            </externalRef>
+            <determination>
+                <external>NRHS:41129</external>
+            </determination>
+            <standardImage>
+                <external>http://morphank.nrm.se/test/41129-ingimar</external>
+            </standardImage>
+            <dwc:BasisOfRecord>Living organism</dwc:BasisOfRecord>
+            <dwc:Collector>Markus Englund</dwc:Collector>
+            <dwc:EarliestDateCollected>2013-07-3T13:52:28</dwc:EarliestDateCollected>
+            <dwc:LatestDateCollected>2013-07-4T18:31:39</dwc:LatestDateCollected>
+            <dwcg:DecimalLatitude>36.38371</dwcg:DecimalLatitude>
+            <dwcg:DecimalLongitude>-87.00771</dwcg:DecimalLongitude>
+            <dwc:MaximumElevationInMeters>200</dwc:MaximumElevationInMeters>
+            <dwc:MinimumElevationInMeters>200</dwc:MinimumElevationInMeters>
+            <dwc:StateProvince>Stockholm</dwc:StateProvince>
+            <dwc:County>Enskede</dwc:County>
+            <dwc:Locality>Gubbangen</dwc:Locality>
+        </object>
+        <object type="image">
+            <sourceId>
+                <local>local:4112929</local>
+                <external>http://morphank.nrm.se/test/41129-ingimar</external>
+            </sourceId>
+            <owner>
+                <userId>2000033</userId>
+                <groupId>2000034</groupId>
+            </owner>
+            <dateToPublish>2013-07-15</dateToPublish>
+            <objectTypeId>Image</objectTypeId>
+           <externalRef type="5">
+                <label>http://morphank.nrm.se/test/41129-ingimar</label>
+                <urlData>http://morphank.nrm.se/test/41129-ingimar</urlData>
+            </externalRef>
+            <imageType>tif</imageType>
+            <copyrightText>(c) 2013 Ingimar Erlingsson</copyrightText>
+            <originalFileName>NHRS-GULI0000041129_face.tif</originalFileName>
+            <creativeCommons>&lt;a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license"&gt; &lt;img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width: 0pt;" alt="Creative Commons License"/&gt; &lt;/a&gt;</creativeCommons>
+            <photographer>Ingimar Erlingsson</photographer>
+            <specimen>
+                <external>http://morphank.nrm.se/test/41129-ingimar</external>
+            </specimen>
+            <view>
+                <morphbank>41129463267</morphbank>
+            </view>
+        </object>
+    </insert>
+</mb:request>
