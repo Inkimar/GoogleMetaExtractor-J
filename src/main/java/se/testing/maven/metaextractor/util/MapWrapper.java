@@ -5,10 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * Catalognr är nyckeln, äger en lista som är alla dess vyer.
- * 
+ *
  * @author ingimar
  */
 public class MapWrapper {
@@ -51,9 +52,39 @@ public class MapWrapper {
         return map.get(key);
     }
 
-    public int getSizeOfCatalogNumbers() {
+    public int getNumberOfCatalogs() {
         int size = map.size();
         return size;
+    }
+
+    /**
+     * Fetching the Catalog-numbers.
+     *
+     * @return catalognumbers
+     */
+    public List<String> getListOfCatalogs() {
+        Set<String> catalogs = getCatalogs();
+        return new ArrayList<>(catalogs);
+    }
+
+    private Set<String> getCatalogs() {
+        Set<String> keySet = map.keySet();
+        return keySet;
+    }
+
+    /**
+     * Fetching the Catalog-numbers, ordered.
+     *
+     * @return catalognumbers
+     */
+    public List<String> getSortedListOfCatalogs() {
+        Set<String> catalogs = getSortedCatalogs();
+        return new ArrayList<>(catalogs);
+    }
+
+    private Set<String> getSortedCatalogs() {
+        TreeMap map = new TreeMap(getMap());
+        return map.keySet();
     }
 
     /**

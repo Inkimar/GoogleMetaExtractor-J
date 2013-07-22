@@ -26,10 +26,15 @@ public class Startup {
         writeOutNameOfFiles(directoryLinuxMac);
 
         MapWrapper container = populateMapWrapper(directoryLinuxMac);
-        final int sizeOfCatalogNumbers = container.getSizeOfCatalogNumbers();
-        System.out.println("Size " + sizeOfCatalogNumbers);
+       // List<String> listOfCatalogs = container.getListOfCatalogs();
+        List<String> listOfCatalogs = container.getSortedListOfCatalogs();
+        printCatalogs(listOfCatalogs);
         
-       // getMetaData(directoryLinuxMac);
+        final int sizeOfCatalogNumbers = container.getNumberOfCatalogs();
+        System.out.println("Size from container-method :  " + sizeOfCatalogNumbers);
+        
+       
+        // getMetaData(directoryLinuxMac);
 
 
     }
@@ -58,5 +63,12 @@ public class Startup {
     private static int getNumberOfFiles(String directoryLinuxMac) {
         int numberOfFiles = ListFilesUtil.getNumberOfFiles(directoryLinuxMac);
         return numberOfFiles;
+    }
+    private static void printCatalogs(List <String> listOfCatalogs){
+        int count = 0;
+         for (String catalog : listOfCatalogs) {
+             count++;
+            System.out.println("count:= " + count + ": Catalognr : "+ catalog);
+        }
     }
 }
