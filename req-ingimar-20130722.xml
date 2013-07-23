@@ -27,7 +27,7 @@
                 <groupId>2000034</groupId>
             </owner>
             <objectTypeId>Specimen</objectTypeId>
-            <description>From specimen 000030035</description>
+            <description>From specimen NHRS-GULI000004112_face</description>
             <!--
             <dwc:Continent>North America</dwc:Continent>
             <dwc:Country>USA</dwc:Country>
@@ -46,7 +46,7 @@
             <dwc:ScientificName>Nocomis asper</dwc:ScientificName>
             <dwc:Genus>Nocomis</dwc:Genus>
             -->
-            <dwc:CatalogNumber>000030035</dwc:CatalogNumber>
+            <dwc:CatalogNumber>NHRS-GULI000004112</dwc:CatalogNumber>
             <!--
             <dwcc:IndividualCount>1</dwcc:IndividualCount>
             -->
@@ -60,9 +60,9 @@
                 <groupId>2000034</groupId>
             </owner>
             <objectTypeId>Image</objectTypeId>
-            <description>ingimar testar</description>
+            <description>ingimar testar 4112 face</description>
             <imageType>tif</imageType>
-            <originalFileName>NHRS-GULI000004115_abdo.tif</originalFileName>
+            <originalFileName>NHRS-GULI000004112_face.tif</originalFileName>
             <specimen>
                 <external>ingimar-specimen-external</external>
             </specimen>

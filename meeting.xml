@@ -54,6 +54,8 @@ Is morphbank able to handle cr2
 Note :
 XML-Request, validating against :
 Referenced entity at "http://www.morphbank.net/schema/mbsvc3.xsd".
+-> <!-- BaseObject --><xs:element name="sourceId" type="xmlId"/>
+
 Referenced entity at "http://rs.tdwg.org/dwc/tdwg_dw_core.xsd".
 Referenced entity at "http://rs.tdwg.org/dwc/tdwg_basetypes.xsd".
 Referenced entity at "http://rs.tdwg.org/dwc/tdwg_dw_element.xsd".
