@@ -12,12 +12,12 @@
             <userId>2000033</userId>
             <groupId>2000034</groupId>
         </submitter>
-        <object type="Specimen">
-            <sourceId>
+<object type="Specimen">
+     <sourceId>
                 <local>local:411290</local>
                 <external>http://morphank.nrm.se/test/41129-ingimar</external>
             </sourceId>
-            <!--
+    <!--
             <sourceId>
                 <external>ingimar-specimen-external</external>
             </sourceId>
@@ -51,13 +51,9 @@
             <dwcc:IndividualCount>1</dwcc:IndividualCount>
             -->
         </object>
-        <object type="Image">
-<!--            <sourceId>
+  <object type="Image">
+            <sourceId>
                 <external>ingimar-image-external</external>
-            </sourceId>-->
-              <sourceId>
-                <local>local:411290</local>
-                <external>http://morphank.nrm.se/test/41129-ingimar</external>
             </sourceId>
             <owner>
                 <userId>2000033</userId>
