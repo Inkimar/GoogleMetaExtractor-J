@@ -9,7 +9,6 @@ http://www.morphbank.net/schema/mbsvc3.xsd"
             xmlns:ns7="http://rs.tdwg.org/dwc/dwelement" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
             xmlns:ns8="http://digir.net/schema/conceptual/darwin/2003/1.0/">
-    <!-- this worked on morphbank.nrm.se --> 
     <submitter>
         <userId>2000033</userId>
         <groupId>2000034</groupId>
@@ -19,28 +18,25 @@ http://www.morphbank.net/schema/mbsvc3.xsd"
             <userId>2000033</userId>
             <groupId>2000034</groupId>
         </submitter>
-        <object type="Specimen">
+<!--        <object type="Specimen">
             <sourceId>
-                <external>ingimar-specimen-external</external>
+                <local>local:GULI000004112-23Juli</local>
+               <external>http://morphank.nrm.se/23Juli2013/GULI000004112-ingimar</external>
             </sourceId>
             <owner>
                 <userId>2000033</userId>
                 <groupId>2000034</groupId>
             </owner>
             <objectTypeId>Specimen</objectTypeId>
-            <description>From specimen 000030035</description>
-            <userProperty property="recordedBy" value="Wiley, Edward; KU Ichthyology Class" namespaceURI=""/>
-            <userProperty property="eventDate" value="May 4, 2002" namespaceURI=""/>
-            <determination>
-                <external>NRM:NRHS</external>
-            </determination>-->
+            <description>NHRS-GULI000004112_face</description>
+            
             <dwc:Continent>North America</dwc:Continent>
             <dwc:Country>USA</dwc:Country>
             <dwc:County>Cherokee</dwc:County>
             <dwc:StateProvince>Kansas</dwc:StateProvince>
             <dwcg:DecimalLatitude>34.0419998169</dwcg:DecimalLatitude>
-            <dwc:Locality>Shoal Creek at Schermerhorn Park, S of 
-                Galena on Hwy 26</dwc:Locality>
+            <dwc:Locality>Shoal Creek at Schermerhorn Park, 
+S of Galena on Hwy 26</dwc:Locality>
             <dwcg:DecimalLongitude>-94.6429977417</dwcg:DecimalLongitude>
             <dwcc:Preparations>EtOH - 1</dwcc:Preparations>
             <dwc:Class>Actinopterygii</dwc:Class>
@@ -51,24 +47,28 @@ http://www.morphbank.net/schema/mbsvc3.xsd"
             <dwc:SpecificEpithet>asper</dwc:SpecificEpithet>
             <dwc:ScientificName>Nocomis asper</dwc:ScientificName>
             <dwc:Genus>Nocomis</dwc:Genus>
-            <dwc:CatalogNumber>000030035</dwc:CatalogNumber>
+            
+            <dwc:CatalogNumber>NHRS-GULI000004112A</dwc:CatalogNumber>
+            
             <dwcc:IndividualCount>1</dwcc:IndividualCount>
-        </object>
+            
+        </object>-->
         <object type="Image">
             <sourceId>
-                <external>ingimar-image-external</external>
+                <local>local:I000004112-23Juli</local>
+               <external>http://morphank/23Juli2013/GULI000004112-ingimar</external>
             </sourceId>
             <owner>
                 <userId>2000033</userId>
                 <groupId>2000034</groupId>
             </owner>
             <objectTypeId>Image</objectTypeId>
-            <description>ingimar testar</description>
+            <description>23Juli</description>
             <imageType>tif</imageType>
-            <originalFileName>NHRS-GULI000004115_abdo.tif</originalFileName>
-            <specimen>
-                <external>ingimar-specimen-external</external>
-            </specimen>
+            <originalFileName>NHRS-GULI000004112_face.tif</originalFileName>
+<!--            <specimen>
+                <external>ingimar-specimen-external-where?</external>
+            </specimen>-->
         </object>
     </insert>
 </mb:request>

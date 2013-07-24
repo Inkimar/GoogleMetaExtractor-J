@@ -9,7 +9,6 @@ http://www.morphbank.net/schema/mbsvc3.xsd"
             xmlns:ns7="http://rs.tdwg.org/dwc/dwelement" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
             xmlns:ns8="http://digir.net/schema/conceptual/darwin/2003/1.0/">
-    <!-- this worked on morphbank.nrm.se --> 
     <submitter>
         <userId>2000033</userId>
         <groupId>2000034</groupId>
@@ -19,21 +18,24 @@ http://www.morphbank.net/schema/mbsvc3.xsd"
             <userId>2000033</userId>
             <groupId>2000034</groupId>
         </submitter>
-        <object type="Specimen">
+ <object type="Specimen">
             <sourceId>
-                <external>ingimar-specimen-external</external>
+                <external>Specimen-ABC-15:00</external>
             </sourceId>
             <owner>
                 <userId>2000033</userId>
                 <groupId>2000034</groupId>
             </owner>
             <objectTypeId>Specimen</objectTypeId>
-            <description>From specimen 000030035</description>
-            <userProperty property="recordedBy" value="Wiley, Edward; KU Ichthyology Class" namespaceURI=""/>
-            <userProperty property="eventDate" value="May 4, 2002" namespaceURI=""/>
+            <description>From specimen NHRS-GULI000004115</description>
+            <userProperty property="recordedBy" 
+                          value="Wiley, Edward; KU Ichthyology Class" 
+                          namespaceURI=""/>
+            <userProperty property="eventDate" value="May 4, 2002" 
+                          namespaceURI=""/>
             <determination>
-                <external>NRM:NRHS</external>
-            </determination>-->
+                <external>Test</external>
+            </determination>
             <dwc:Continent>North America</dwc:Continent>
             <dwc:Country>USA</dwc:Country>
             <dwc:County>Cherokee</dwc:County>
@@ -51,12 +53,12 @@ http://www.morphbank.net/schema/mbsvc3.xsd"
             <dwc:SpecificEpithet>asper</dwc:SpecificEpithet>
             <dwc:ScientificName>Nocomis asper</dwc:ScientificName>
             <dwc:Genus>Nocomis</dwc:Genus>
-            <dwc:CatalogNumber>000030035</dwc:CatalogNumber>
+            <dwc:CatalogNumber>NHRS-GULI000004115-kl:1451F</dwc:CatalogNumber>
             <dwcc:IndividualCount>1</dwcc:IndividualCount>
         </object>
         <object type="Image">
             <sourceId>
-                <external>ingimar-image-external</external>
+                 <external>Image-ABC-15:00</external>
             </sourceId>
             <owner>
                 <userId>2000033</userId>
@@ -65,9 +67,9 @@ http://www.morphbank.net/schema/mbsvc3.xsd"
             <objectTypeId>Image</objectTypeId>
             <description>ingimar testar</description>
             <imageType>tif</imageType>
-            <originalFileName>NHRS-GULI000004115_abdo.tif</originalFileName>
+            <originalFileName>NHRS-GULI000004115_dors.tif</originalFileName>
             <specimen>
-                <external>ingimar-specimen-external</external>
+                 <external>Specimen-ABC-15:00</external>
             </specimen>
         </object>
     </insert>
