@@ -9,7 +9,7 @@ http://www.morphbank.net/schema/mbsvc3.xsd"
             xmlns:ns7="http://rs.tdwg.org/dwc/dwelement" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
             xmlns:ns8="http://digir.net/schema/conceptual/darwin/2003/1.0/">
-    <!-- this worked on morphbank.nrm.se --> 
+ 
     <submitter>
         <userId>2000033</userId>
         <groupId>2000034</groupId>
