@@ -18,14 +18,14 @@ public class Startup {
 
         System.out.println("Main");
 
-        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
-        System.out.println("Path is " + directoryLinuxMac);
-        final int numberOfFiles = getNumberOfFiles(directoryLinuxMac);
+        final String fileDirectory = FilePropertiesHelper.getImagesFilePath();
+        System.out.println("Path is " + fileDirectory);
+        final int numberOfFiles = getNumberOfFiles(fileDirectory);
         System.out.println("Number of files in directory " + numberOfFiles);
 
-        writeOutNameOfFiles(directoryLinuxMac);
+        writeOutNameOfFiles(fileDirectory);
 
-        MapWrapper container = populateMapWrapper(directoryLinuxMac);
+        MapWrapper container = populateMapWrapper(fileDirectory);
         // List<String> listOfCatalogs = container.getListOfCatalogs();
         List<String> listOfCatalogs = container.getSortedListOfCatalogs();
         printCatalogs(listOfCatalogs);
@@ -33,9 +33,7 @@ public class Startup {
         final int sizeOfCatalogNumbers = container.getNumberOfCatalogs();
         System.out.println("Size from container-method :  " + sizeOfCatalogNumbers);
 
-
-        // getMetaData(directoryLinuxMac);
-
+        getMetaData(fileDirectory,false);
 
     }
 
@@ -45,14 +43,15 @@ public class Startup {
         return MapWrapper.getPopulatedMapWrapper(fileNames);
     }
 
-    private static void getMetaData(String directoryLinuxMac) {
+    private static void getMetaData(String directoryLinuxMac, boolean withFilter) {
         ExifExtract retriever = new ExifExtract();
-        // Fetches a single filter from property-file
         final String filter = FilePropertiesHelper.getImageFilter();
 
-        // Antingen använder du ett filter ( ex. endast .CR2-bilder eller inte )
-        //retriever.fetchMetaDataFromImage(directoryLinuxMac, filter);
-        retriever.fetchMetaDataFromImage(directoryLinuxMac);
+        if (withFilter) {
+            retriever.fetchMetaDataFromImage(directoryLinuxMac, filter);
+        } else {
+            retriever.fetchMetaDataFromImage(directoryLinuxMac);
+        }
     }
 
     private static void writeOutNameOfFiles(String directoryLinuxMac) {
