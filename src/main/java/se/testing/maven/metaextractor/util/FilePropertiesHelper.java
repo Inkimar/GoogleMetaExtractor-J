@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Reading from the property-file.
@@ -15,70 +17,35 @@ import java.util.Properties;
  */
 public class FilePropertiesHelper {
 
-    public static String getImagesFilePath() {
-
-        String filePath = "";
-        Properties properties = new Properties();
-
-        try {
-            InputStream iStream = getInputStream();
-            properties.load(iStream);
-            filePath = properties.getProperty("filepath.images");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public static String getJsonPath() {
+        Properties properties = getPropertyFile();
+        String filePath = properties.getProperty("file.for.json");
         return filePath;
     }
-    
-     public static String getTestImagesFilePath() {
 
-        String filePath = "";
-        Properties properties = new Properties();
+    public static String getImagesFilePath() {
+        Properties properties = getPropertyFile();
+        String filePath = properties.getProperty("filepath.images");
+        return filePath;
+    }
 
-        try {
-            InputStream iStream = getInputStream();
-            properties.load(iStream);
-            filePath = properties.getProperty("filepath.images.test");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public static String getTestImagesFilePath() {
+        Properties properties = getPropertyFile();
+        String filePath = properties.getProperty("filepath.images.test");
         return filePath;
     }
 
     public static String getTopLevelFilePath() {
-
-        String filePath = "";
-        Properties properties = new Properties();
-
-        try {
-            InputStream iStream = getInputStream();
-            properties.load(iStream);
-            filePath = properties.getProperty("filepath.top");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        Properties properties = getPropertyFile();
+        String filePath = properties.getProperty("filepath.top");
         return filePath;
     }
 
     public static String getImageFilter() {
 
-        String filter = "";
-        Properties properties = new Properties();
-
-        try {
-
-            InputStream iStream = getInputStream();
-            properties.load(iStream);
-            filter = properties.getProperty("images.filter");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return filter;
+        Properties properties = getPropertyFile();
+        String typeOfFilter = properties.getProperty("images.filter");
+        return typeOfFilter;
     }
 
     public static List getImageFilters() {
@@ -103,29 +70,20 @@ public class FilePropertiesHelper {
     public static String getLogNameWithPrefix(boolean detailed) {
         String logFileName = getLogFileName();
         String prefix;
-        if ( detailed ){
-        prefix = getDetailedFormattedDate();
+        if (detailed) {
+            prefix = getDetailedFormattedDate();
         } else {
-           prefix = getDate(); 
+            prefix = getDate();
         }
 
         return prefix + "-" + logFileName;
     }
 
     private static String getLogFileName() {
-
-        String fileName = "";
-        Properties properties = new Properties();
-
-        try {
-            InputStream iStream = getInputStream();
-            properties.load(iStream);
-            fileName = properties.getProperty("log.filename");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return fileName;
+        
+         Properties properties = getPropertyFile();
+        String typeOfFilter = properties.getProperty("log.filename");
+        return typeOfFilter;
     }
 
     private static String getDetailedFormattedDate() {
@@ -134,6 +92,7 @@ public class FilePropertiesHelper {
         String formattedDate = format.format(date);
         return formattedDate;
     }
+
     private static String getDate() {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -142,8 +101,20 @@ public class FilePropertiesHelper {
     }
 
     private static InputStream getInputStream() {
-        InputStream iStream =
-                FilePropertiesHelper.class.getClassLoader().getResourceAsStream("config.properties");
+        InputStream iStream
+                = FilePropertiesHelper.class.getClassLoader().getResourceAsStream("config.properties");
         return iStream;
+    }
+
+    private static Properties getPropertyFile() {
+        InputStream iStream = getInputStream();
+        Properties properties = new Properties();
+        try {
+            properties.load(iStream);
+        } catch (IOException ex) {
+            Logger.getLogger(FilePropertiesHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return properties;
     }
 }

@@ -12,6 +12,7 @@
     <version>1.0-SNAPSHOT</version>
     <name>GoogleMetaExtractor</name>
     <url>http://maven.apache.org</url>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -25,10 +26,16 @@
         </plugins>
     </reporting>
     <dependencies>
+        <!--http://metadata-extractor.googlecode.com/svn/trunk/Javadoc/index.html-->
         <dependency>
             <groupId>com.drewnoakes</groupId>
             <artifactId>metadata-extractor</artifactId>
             <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.mp4parser</groupId>
+            <artifactId>isoparser</artifactId>
+            <version>1.0.4.2</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -36,10 +43,12 @@
             <version>13.0.1</version>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>2.0.5</version>
-        </dependency> 
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1</version>
+            <type>jar</type>
+        </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
