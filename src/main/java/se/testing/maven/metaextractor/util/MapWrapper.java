@@ -96,8 +96,10 @@ public class MapWrapper {
      */
     public static MapWrapper getPopulatedMapWrapper(List<String> fileNames) {
         MapWrapper container = new MapWrapper();
+        Map<String, String> map = new HashMap();
         for (String fileName : fileNames) {
             Map parsed = ListFilesUtil.parseFileName(fileName);
+            // Map parsed = ListFilesUtil.parseTestFileName(fileName,map);
             container.transformMap(parsed);
         }
         return container;

@@ -1,19 +1,28 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package se.testing.maven.metaextractor.util;
 
 import se.testing.maven.metaextractor.util.enu.NoView;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import org.jdom.Content;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.filter.ElementFilter;
+import org.jdom.input.SAXBuilder;
+import org.junit.Ignore;
+import se.testing.maven.entities.Image;
 
 /**
  * Using hamcrest for comparing unsorted lists. - first time, good to know -
@@ -29,6 +38,7 @@ public class ListFilesUtilTest {
     final private String fileNameWithFaceView = "NHRS-GULI000004114_face.tif";
 
     @Test
+    @Ignore
     public void GET_CATALOGNUMBER_FROM_FileName() {
         String expectedResult = "NHRS-GULI000004114";
 
@@ -41,6 +51,7 @@ public class ListFilesUtilTest {
     }
 
     @Test
+    @Ignore
     public void parse_Filename_With_View() {
         String fileNameWith_labe_View = "NHRS-GULI000004114_labe.tif";
         String expectedCatalogNumber = "NHRS-GULI000004114";
@@ -52,6 +63,7 @@ public class ListFilesUtilTest {
     }
 
     @Test
+    @Ignore
     public void parse_Filename_With_NO_View() {
         // det saknas 'under_score'
         final String FILENAME_WITH_NO_VIEW = "NHRS-GULI000004114.tif";
@@ -59,12 +71,13 @@ public class ListFilesUtilTest {
         Map map = ListFilesUtil.parseFileName(FILENAME_WITH_NO_VIEW);
 
         assertTrue(map.containsKey(expectedCatalogNumber));
-        
+
         String expectedView = NoView.NO_VIEW.getText();
         assertEquals(expectedView, map.get(expectedCatalogNumber));
     }
 
     @Test
+    @Ignore
     public void GET_VIEW_FROM_FileName() {
         String expectedResult = "face";
         System.out.println("expected " + expectedResult);
@@ -82,6 +95,7 @@ public class ListFilesUtilTest {
      * NHRS-GULI000004113, NHRS-GULI000004114, NHRS-GULI000004115
      */
     @Test
+    @Ignore
     public void GET_CATALOGNUMBER_AND_VIEW_FROM_FILENAME() {
 
         final String directoryLinuxMac = FilePropertiesHelper.getTestImagesFilePath();
@@ -131,6 +145,7 @@ public class ListFilesUtilTest {
      * http://pragmaticqa.co.uk/blog/2012/10/comparing-lists-with-hamcrest/
      */
     @Test
+    @Ignore
     public void TEST_HAMCREST_listTestsWithoutOrder() {
         List<String> list1 = new ArrayList<>();
         List<String> list2 = new ArrayList<>();
@@ -145,4 +160,53 @@ public class ListFilesUtilTest {
 
         assertThat("List equality without order", list1, containsInAnyOrder(list2.toArray()));
     }
+
+    @Test
+    public void parseTestfilename() {
+
+        final String directoryLinuxMac = FilePropertiesHelper.getTestImagesFilePath();
+        File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
+        List<String> fileNames = ListFilesUtil.getFileNames(files);
+        List<Image> images = new ArrayList<>();
+        for (String fileName : fileNames) {
+            Image image = ListFilesUtil.parseTestFileName(fileName, ".jpg");
+            images.add(image);
+        }
+        System.out.println("Orginal imageList " + images.size());
+        List<Image> extendedImageList = new ArrayList<>();
+        for (Image image : images) {
+            // String latinName = "Lucanus%20cervus";
+            String api = "https://dina-web.net/naturalist/api/v1/spm/get/taxon/latin/" + image.getLatinName() + ".xml?locale=sv_SE ";
+            ElementFilter filter = new ElementFilter("taxonId");
+            URL url;
+            try {
+                url = new URL(api);
+                SAXBuilder builder = new SAXBuilder();
+                Document doc = builder.build(url);
+                Element root = doc.getRootElement();
+                List<Element> content = root.getContent(filter);
+                String value = "";
+                for (Element c : content) {
+                    value = c.getValue();
+                }
+//                String value = content.getValue();
+                image.setNaturalistUUID(value);
+                extendedImageList.add(image);
+//                System.out.println("image " + image);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(ListFilesUtilTest.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (JDOMException | IOException ex) {
+                Logger.getLogger(ListFilesUtilTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        System.out.println("Extended imageList " + extendedImageList.size());
+        
+        for (Image image : extendedImageList) {
+            if(image.getNaturalistUUID().isEmpty()){
+                System.out.println(image);
+            }
+        }
+    }
+
 }

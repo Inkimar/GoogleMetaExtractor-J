@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+
 <mb:request xsi:schemaLocation="http://www.morphbank.net/mbsvc3/ 
-http://www.morphbank.net/schema/mbsvc3.xsd" 
-            xmlns:dwc="http://rs.tdwg.org/dwc/dwcore/" 
+http://www.morphbank.net/schema/mbsvc3.xsd"      
+            xmlns:dwc="http://rs.tdwg.org/dwc/terms/"
             xmlns:mb="http://www.morphbank.net/mbsvc3/" 
             xmlns:dwcg="http://rs.tdwg.org/dwc/geospatial/" 
             xmlns:dwce="http://rs.tdwg.org/dwc/dwelement/" 

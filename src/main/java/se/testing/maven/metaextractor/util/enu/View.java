@@ -24,7 +24,6 @@ public enum View {
         return contains;
     }
     
-    // replace with some guava-tech later ?
     private static List<String> getViewListWithStringValues(){
         List<String> listOfViewString = new ArrayList<>();
         for (View view : Arrays.asList(values())) {
