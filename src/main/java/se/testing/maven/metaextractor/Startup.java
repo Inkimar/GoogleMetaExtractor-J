@@ -2,7 +2,13 @@ package se.testing.maven.metaextractor;
 
 import se.testing.maven.metaextractor.util.ListFilesUtil;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.simple.JSONObject;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 import se.testing.maven.metaextractor.exif.ExifExtract;
 import se.testing.maven.metaextractor.util.MapWrapper;
@@ -18,14 +24,15 @@ public class Startup {
 
         System.out.println("Main");
 
-        final String directoryLinuxMac = FilePropertiesHelper.getImagesFilePath();
-        System.out.println("Path is " + directoryLinuxMac);
-        final int numberOfFiles = getNumberOfFiles(directoryLinuxMac);
+        final String fileDirectory = FilePropertiesHelper.getImagesFilePath();
+
+        System.out.println("Path is " + fileDirectory);
+        final int numberOfFiles = getNumberOfFiles(fileDirectory);
         System.out.println("Number of files in directory " + numberOfFiles);
 
-        writeOutNameOfFiles(directoryLinuxMac);
+        writeOutNameOfFiles(fileDirectory);
 
-        MapWrapper container = populateMapWrapper(directoryLinuxMac);
+        MapWrapper container = populateMapWrapper(fileDirectory);
         // List<String> listOfCatalogs = container.getListOfCatalogs();
         List<String> listOfCatalogs = container.getSortedListOfCatalogs();
         printCatalogs(listOfCatalogs);
@@ -33,26 +40,45 @@ public class Startup {
         final int sizeOfCatalogNumbers = container.getNumberOfCatalogs();
         System.out.println("Size from container-method :  " + sizeOfCatalogNumbers);
 
-
-        // getMetaData(directoryLinuxMac);
-
+        getMetaData(fileDirectory, true);
 
     }
 
-    private static MapWrapper populateMapWrapper(String directoryLinuxMac) {
-        File[] files = ListFilesUtil.getFiles(directoryLinuxMac);
+    private static MapWrapper populateMapWrapper(String directory) {
+        File[] files = ListFilesUtil.getFiles(directory);
         List<String> fileNames = ListFilesUtil.getFileNames(files);
         return MapWrapper.getPopulatedMapWrapper(fileNames);
     }
 
-    private static void getMetaData(String directoryLinuxMac) {
+    private static void getMetaData(String directory, boolean withFilter) {
         ExifExtract retriever = new ExifExtract();
-        // Fetches a single filter from property-file
         final String filter = FilePropertiesHelper.getImageFilter();
 
-        // Antingen använder du ett filter ( ex. endast .CR2-bilder eller inte )
-        //retriever.fetchMetaDataFromImage(directoryLinuxMac, filter);
-        retriever.fetchMetaDataFromImage(directoryLinuxMac);
+        List<JSONObject> listOfJSONobjects = null;
+
+        if (withFilter) {
+            retriever.fetchMetaDataFromImage(directory, filter);
+            listOfJSONobjects = retriever.transformToJSON(directory, filter);
+        } else {
+            retriever.fetchMetaDataFromImage(directory);
+        }
+        FileWriter fileWriter = null;
+        final String pathToJSONfile = FilePropertiesHelper.getJsonPath();
+        int count = 1;
+        try {
+            fileWriter = new FileWriter(pathToJSONfile);
+            for (JSONObject json : listOfJSONobjects) {
+
+                fileWriter.write(json.toJSONString());
+                System.out.println(json + "\n");
+
+                fileWriter.flush();
+                count++;
+            }
+        } catch (IOException ex) {
+        } finally {
+        }
+
     }
 
     private static void writeOutNameOfFiles(String directoryLinuxMac) {

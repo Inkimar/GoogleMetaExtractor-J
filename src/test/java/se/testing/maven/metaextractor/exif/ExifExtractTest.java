@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 import se.testing.maven.metaextractor.util.ListFilesUtil;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 
@@ -19,6 +20,7 @@ import se.testing.maven.metaextractor.util.FilePropertiesHelper;
  *
  * @author ingimar
  */
+@Ignore
 public class ExifExtractTest {
 
     final String fileNameSuffix = ".CR2";
