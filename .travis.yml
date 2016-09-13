@@ -2,8 +2,8 @@ language: java
 jdk:
 - oraclejdk7
 
-script:
-	mvn install -Dmaven.test.skip=true
+script: mvn install -Dmaven.test.skip=true
+
 deploy:
   provider: releases
   api_key:
