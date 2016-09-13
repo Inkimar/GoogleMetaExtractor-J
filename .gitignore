@@ -1,7 +1,12 @@
 *.class
 20*.xml
 /target
+
 # Package Files #
 *.jar
 *.war
 *.ear
+
+*.log
+resources/*jpg
+resources/*JPG

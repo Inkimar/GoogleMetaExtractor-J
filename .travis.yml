@@ -1,0 +1,13 @@
+language: java
+jdk:
+- oraclejdk7
+deploy:
+  provider: releases
+  api_key:
+
+  #file: target/access2csv-jar-with-dependencies.jar
+  #skip_cleanup: true
+  #on:
+    #tags: true
+    #repo: Inkimar/commons_cli_ex
+    #all_branches: true
