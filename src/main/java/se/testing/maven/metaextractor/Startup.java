@@ -20,6 +20,7 @@ public class Startup {
     public static void main(String[] args) {
 
         System.out.println("length  for args is "+args.length);
+        System.out.println("v0.0.3 ");
 
         final String fileDirectory = FilePropertiesHelper.getImagesFilePath();
         if (fileDirectory == null || fileDirectory.isEmpty() ){
