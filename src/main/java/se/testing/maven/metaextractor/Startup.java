@@ -4,10 +4,7 @@ import se.testing.maven.metaextractor.util.ListFilesUtil;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 import se.testing.maven.metaextractor.util.FilePropertiesHelper;
 import se.testing.maven.metaextractor.exif.ExifExtract;
@@ -22,13 +19,15 @@ public class Startup {
 
     public static void main(String[] args) {
 
-        System.out.println("Main");
+        System.out.println("args length is "+args.length);
 
         final String fileDirectory = FilePropertiesHelper.getImagesFilePath();
-
-        System.out.println("Path is " + fileDirectory);
+        if (fileDirectory == null || fileDirectory.isEmpty() ){
+            throw new IllegalArgumentException("Not a valid path");
+        }
+ 
         final int numberOfFiles = getNumberOfFiles(fileDirectory);
-        System.out.println("Number of files in directory " + numberOfFiles);
+        System.out.println("path "+ fileDirectory + " #" + numberOfFiles +" image(s)");
 
         writeOutNameOfFiles(fileDirectory);
 
