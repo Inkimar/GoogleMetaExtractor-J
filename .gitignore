@@ -13,3 +13,7 @@ resources/*JPG
 
 resources/*jpg*
 resources/*JPG*
+
+# netbeans
+nbactions.xml
+
