@@ -17,10 +17,10 @@ import se.testing.maven.metaextractor.util.enu.SwedishSex;
 public class ListFilesUtil {
 
     // The delimiter between catalogNumber and view.
-    final public static String DELIMITER_CATALOGNUMBER = "_";
+    final public static String DELIMITER_FOR_CATALOGNUMBER = "_";
 
-    // a dot is a reserved character in regular expression, must write like this.
-    final public static String DELIMITER_VIEW = "\\.";
+    // a dot is a reserved character in regular expression, must write it like this.
+    final public static String DELIMITER_FOR_VIEW = "\\.";
 
     /**
      * List all the files and folders from a directory
@@ -44,7 +44,6 @@ public class ListFilesUtil {
         int count = 0;
 
         for (File file : fList) {
-
             if (file.isFile()) {
                 count++;
                 System.out.println(count + " : " + file.getName());
@@ -68,7 +67,7 @@ public class ListFilesUtil {
     }
 
     protected static Map parseFileName(String fileName) {
-        return parseFileName(fileName, DELIMITER_CATALOGNUMBER, true);
+        return parseFileName(fileName, DELIMITER_FOR_CATALOGNUMBER, true);
     }
 
     protected static Map parseFileName(String fileName, String delimiter, boolean isLogged) {
@@ -88,7 +87,7 @@ public class ListFilesUtil {
                 map.put(cat, view);
             }
         } else { // If the is no underscore but a dot
-            String[] split = fileName.split(DELIMITER_VIEW);
+            String[] split = fileName.split(DELIMITER_FOR_VIEW);
             String cat = getCatalogeNumberFromFile(split);
 
             map.put(cat, NoView.NO_VIEW.getText());
@@ -140,7 +139,7 @@ public class ListFilesUtil {
 
     protected static String getViewFromFile(String[] fragments) {
         String viewAndSuffix = fragments[1];
-        String[] fragment = parseString(viewAndSuffix, ListFilesUtil.DELIMITER_VIEW);
+        String[] fragment = parseString(viewAndSuffix, ListFilesUtil.DELIMITER_FOR_VIEW);
         return fragment[0];
     }
 
@@ -148,6 +147,7 @@ public class ListFilesUtil {
      * Returns all the files under a directory
      *
      * @param directoryName to be listed
+     * @return 
      */
     public static File[] getFiles(String directoryName) {
         return getFileListInFolder(directoryName);
@@ -180,21 +180,4 @@ public class ListFilesUtil {
         File directory = new File(directoryName);
         return directory.listFiles();
     }
-    /**
-     * List all files from a directory and its subdirectories
-     *
-     * @param directoryName to be listed
-     */
-//    public void listFilesAndFilesSubDirectories(String directoryName) {
-//
-//        File[] fList = getFileListInFolder(directoryName);
-//
-//        for (File file : fList) {
-//            if (file.isFile()) {
-//                System.out.println(file.getAbsolutePath());
-//            } else if (file.isDirectory()) {
-//                listFilesAndFilesSubDirectories(file.getAbsolutePath());
-//            }
-//        }
-//    }
 }
