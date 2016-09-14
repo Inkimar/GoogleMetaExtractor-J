@@ -18,4 +18,4 @@ deploy:
     all_branches: true
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t 30699563-00fc-40e2-8abb-f8c138dce67a
+  - bash <(curl -s https://codecov.io/bash) 
