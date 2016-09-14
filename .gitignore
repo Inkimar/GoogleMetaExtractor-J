@@ -10,3 +10,6 @@
 *.log
 resources/*jpg
 resources/*JPG
+
+resources/*jpg*
+resources/*JPG*
