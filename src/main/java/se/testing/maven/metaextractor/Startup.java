@@ -19,16 +19,20 @@ public class Startup {
 
     public static void main(String[] args) {
 
-        System.out.println("length  for args is "+args.length);
+        System.out.println("length  for args is " + args.length);
         System.out.println("v0.0.3 ");
-
-        final String fileDirectory = FilePropertiesHelper.getImagesFilePath();
-        if (fileDirectory == null || fileDirectory.isEmpty() ){
-            throw new IllegalArgumentException("Not a valid path");
+        String fileDirectory = "";
+        if (args.length > 0) {
+            fileDirectory = args[0];
+        } else {
+            fileDirectory = FilePropertiesHelper.getImagesFilePath();
+            if (fileDirectory == null || fileDirectory.isEmpty()) {
+                throw new IllegalArgumentException("Not a valid path");
+            }
         }
- 
+
         final int numberOfFiles = getNumberOfFiles(fileDirectory);
-        System.out.println("path "+ fileDirectory + " #" + numberOfFiles +" image(s)");
+        System.out.println("path " + fileDirectory + " #" + numberOfFiles + " image(s)");
 
         writeOutNameOfFiles(fileDirectory);
 

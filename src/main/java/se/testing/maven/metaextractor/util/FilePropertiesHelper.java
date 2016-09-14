@@ -42,7 +42,6 @@ public class FilePropertiesHelper {
     }
 
     public static String getImageFilter() {
-
         Properties properties = getPropertyFile();
         String typeOfFilter = properties.getProperty("images.filter");
         return typeOfFilter;
