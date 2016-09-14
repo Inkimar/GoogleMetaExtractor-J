@@ -8,7 +8,7 @@ deploy:
   provider: releases
   api_key:
     secure: Gwvqxq66R3QOfERClNne1Ngvd80mJr91kS4+apoSBIQWCS5QG8QlfJIxeIkpz32lIxAR0G+fLNOlbTMzvdD1hHpsDe8FnAfLQ8+c2EOsDhJTKC0TSrfwwYVcNWaMh1YIKKIq70TEXofoJHnlZXyfF5AyP4U6k0ztg57yr1ykM9dltLnsIU6cvinsypcTeaOed4hS9O0wC4UhBmvvKPp5v+qKpDj5L2jXfgh4q7dD4oJ/y5TWIJeadFYMIudSF+yGuCRdT5eFJ+XPsYxAXRbD9ZX57uDlluhnqxTwa8ClmaF9dTJ1wsirUcIaTJCF+7jx0xoYfWDEHJWNrFC2bwouiaOpAMyIPAaxORkiv+rDyDTdhuNMWqfRY/10/qEw7+tz11NS2xFR3KW77rrwh/NQDt+Q+zse98SlD5m2uDGsIdmJVk1eX04yYzxwq3Gab1mHfMUqFhcCQMbdf2rig8ZyYkja643rW2eWocsZ6Vm0vzcn5DQK8hoLgpKB2f/RrUjlBfd27DTEtMspi9IQsI8umFmy98HYUqQQsdpUCquVEktDHlvb/DMrDGDFZAmK3e55/+wdB8J4IOgvw80i1B3QW07fqB8iGZXdV47HWYqByzAhJX4+Aa4JHEa6lDERaxhGQIlZ8gyJA3dTubv4hP1wsXNDIju5h595wLT8zIeIZ3A=
-  file: target/GoogleMetaExtractor-1.0-SNAPSHOT.jar
+  file: target/MetaExtractor-jar-with-dependencies.jar
   skip_cleanup: true
   on:
     tags: true
