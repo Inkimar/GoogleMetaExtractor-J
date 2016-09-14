@@ -1,5 +1,6 @@
 [![Build Status](https://api.travis-ci.org/Inkimar/GoogleMetaExtractor-J.svg?branch=master)](https://travis-ci.org/Inkimar/GoogleMetaExtractor-J)
 
+[![codecov.io](https://codecov.io/github/Inkimar/GoogleMetaExtractor-J.svg?branch=master)](https://codecov.io/github/Inkimar/GoogleMetaExtractor-J?branch=master)
 =====================
 # MetaExtractor
 work-in-progress <p>
