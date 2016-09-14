@@ -1,0 +1,35 @@
+<mb:responses xsi:schemaLocation="http://www.morphbank.net/mbsvc3/ http://www.morphbank.net/schema/mbsvc3.xsd">
+    <status>request file req-ingimar-20130723.xml stored as req22.xml response stored as resp22.xml</status>
+    <response>
+        <requestSummary>
+            <requestType>insert</requestType>
+            <description>insert from file</description>
+            <submitter>
+                <userId>2000033</userId>
+                <groupId>2</groupId>
+            </submitter>
+        </requestSummary>
+        <status>All objects were saved
+            Number of objects: 2
+            Number of objects with insert problems: 0</status>
+        <numberAffected>0</numberAffected>
+        <object type="Specimen">
+            <sourceId>
+                <morphbank>2000045</morphbank>
+                <local>local:GULI000004112</local>
+                <external>http://morphank.nrm.se/test/41129-ingimar</external>
+            </sourceId>
+            <status>pre-existing object, no new object created</status>
+            <objectTypeId>Specimen</objectTypeId>
+        </object>
+        <object type="Image">
+            <sourceId>
+                <morphbank>2000045</morphbank>
+                <local>local:GULI000004112</local>
+                <external>http://morphank.nrm.se/test/41129-ingimar</external>
+            </sourceId>
+            <status>pre-existing object, no new object created</status>
+            <objectTypeId>Image</objectTypeId>
+        </object>
+    </response>
+</mb:responses><!-- response: /srv/tomcat6/webapps/mbd/xmlfiles/resp22.xml -->
