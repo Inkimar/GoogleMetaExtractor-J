@@ -1,33 +1,15 @@
 package se.testing.maven.metaextractor.util;
 
 import se.testing.maven.metaextractor.util.enu.NoView;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.filter.ElementFilter;
-import org.jdom.input.SAXBuilder;
-import org.junit.Ignore;
-import se.testing.maven.entities.Image;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 
 /**
- * Using hamcrest for comparing unsorted lists. - first time, good to know -
  *
  * @author ingimar
  */
