@@ -7,8 +7,8 @@ work-in-progress <p>
 Java:
 
 1. fetches Image-files with format xxxx-yyyy-nnnnnnnnn_'view'.jpg.
-2. where yyyy-nnnnnnnnn is the catalog-number, _'view'_ is a view such as one of the following {'abdo','face','vent','late','pron','dors', and soforth ... }
-3. parses the name
+2. pattern : where yyyy-nnnnnnnnn is the catalog-number, _'view'_ is a view such as one of the following {'abdo','face','vent','late','pron','dors', and soforth ... }
+3. parses the name, saves it in a map key = catalog-number and values is a list with views
 4. fetches exif-data from images, if asked for..
 
 ## The filename
