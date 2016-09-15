@@ -5,7 +5,11 @@
 work-in-progress <p>
 
 Java:
-Testing to read Image-files and reading metadata from the using Google:s meta extractor
+
+1. fetches Image-files with format xxxx-yyyy-nnnnnnnnn_'view'.jpg.
+2. where yyyy-nnnnnnnnn is the catalog-number, _'view'_ is a view such as one of the following {'abdo','face','vent','late','pron','dors', and soforth ... }
+3. parses the name
+4. fetches exif-data from images, if asked for..
 
 ## The filename
 ex. NHRS-GULI000000001_dors.jpg
@@ -15,7 +19,8 @@ ex. NHRS-GULI000000001_dors.jpg
 prereq: 
 java 
 
-java -jar target/MetaExtractor-jar-with-dependencies.jar ~/Pictures
+1. path = ~/Pictures
+2. java -jar target/MetaExtractor-jar-with-dependencies.jar ~/Pictures
 
 
 
